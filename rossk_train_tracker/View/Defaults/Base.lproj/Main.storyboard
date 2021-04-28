@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZUO-Mf-LZf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="fsk-Uf-HUi">
+            <objects>
+                <viewController id="ZUO-Mf-LZf" customClass="HomeViewController" customModule="rossk_train_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0u8-Il-15p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1w8-Og-vr8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="aLQ-PJ-AE7"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-p0-bES">
+                                <rect key="frame" x="38.5" y="189" width="337" height="513"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-zU-3rl">
+                                        <rect key="frame" x="0.0" y="0.0" width="337" height="75"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5un-ed-r0g">
+                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                <state key="normal" title="Red Line" image="train_icon"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ton-My-wsp">
+                                                <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <state key="normal" title="Orange Line" image="train_icon"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="smc-eg-fnz">
+                                        <rect key="frame" x="0.0" y="146" width="337" height="75"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-Lk-Otb">
+                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
+                                                <color key="backgroundColor" red="0.043002139929286261" green="0.37078124999999995" blue="0.0065685929937450123" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Green Line" image="train_icon"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL2-if-dWg">
+                                                <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <state key="normal" title="Yellow Line" image="train_icon"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pt8-TE-65b">
+                                        <rect key="frame" x="0.0" y="292" width="337" height="75"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-d9-lCE">
+                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <state key="normal" title="Blue Line" image="train_icon"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-4l-v12">
+                                                <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
+                                                <color key="backgroundColor" red="0.37078124999999995" green="0.23587807772400593" blue="0.017983143700757338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Brown Line" image="train_icon"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dAY-Ti-8bE">
+                                        <rect key="frame" x="0.0" y="438" width="337" height="75"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plN-0I-XmB">
+                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
+                                                <color key="backgroundColor" red="0.24679749000902279" green="0.065841817844115649" blue="0.37078124999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Purple Line" image="train_icon"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyC-CC-34F">
+                                                <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
+                                                <color key="backgroundColor" red="0.64910156250000006" green="0.45084185137037824" blue="0.64051404194864914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Pink Line" image="train_icon"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sIP-ry-Qf7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1w8-Og-vr8" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="1bB-5D-aMH"/>
+                            <constraint firstItem="7VG-p0-bES" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sIP-ry-Qf7" secondAttribute="leading" constant="20" id="2Lo-X6-LH1"/>
+                            <constraint firstItem="7VG-p0-bES" firstAttribute="centerX" secondItem="0u8-Il-15p" secondAttribute="centerX" id="KlJ-Rr-6Yn"/>
+                            <constraint firstItem="1w8-Og-vr8" firstAttribute="top" secondItem="sIP-ry-Qf7" secondAttribute="top" id="Qht-g8-Spu"/>
+                            <constraint firstItem="1w8-Og-vr8" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="eor-p5-qt1"/>
+                            <constraint firstItem="sIP-ry-Qf7" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7VG-p0-bES" secondAttribute="bottom" priority="250" constant="50" id="sBO-Sp-nLD"/>
+                            <constraint firstItem="7VG-p0-bES" firstAttribute="top" secondItem="1w8-Og-vr8" secondAttribute="bottom" constant="45" id="usi-eX-hox"/>
+                            <constraint firstItem="sIP-ry-Qf7" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7VG-p0-bES" secondAttribute="trailing" constant="20" id="w2Q-UL-N5x"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnBlue" destination="mZh-d9-lCE" id="vcf-Q1-7xz"/>
+                        <outlet property="btnBrown" destination="h0f-4l-v12" id="sXB-CY-7tr"/>
+                        <outlet property="btnGreen" destination="FVH-Lk-Otb" id="qQn-Xv-Wsz"/>
+                        <outlet property="btnOrange" destination="ton-My-wsp" id="qYP-iO-1TN"/>
+                        <outlet property="btnPink" destination="wyC-CC-34F" id="Sot-Hx-8sP"/>
+                        <outlet property="btnPurple" destination="plN-0I-XmB" id="5OW-X2-UA0"/>
+                        <outlet property="btnRed" destination="5un-ed-r0g" id="5Cg-4X-j7t"/>
+                        <outlet property="btnYellow" destination="BL2-if-dWg" id="LFc-Pj-2Xu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gKl-91-TuD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1072.463768115942" y="-184.15178571428569"/>
+        </scene>
+        <!--Stop Table View Controller-->
+        <scene sceneID="i8m-wG-KKh">
+            <objects>
+                <tableViewController id="cDV-iX-QBw" customClass="StopTableViewController" customModule="rossk_train_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mFZ-tP-bqV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="IdK-gY-sKq">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IdK-gY-sKq" id="BBz-z3-nMK">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cDV-iX-QBw" id="JsD-5i-Xt0"/>
+                            <outlet property="delegate" destination="cDV-iX-QBw" id="mUo-qN-8Tw"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hqD-wa-dnF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-293" y="-184"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Dnm-ke-uVx">
+            <objects>
+                <tableViewController id="8WV-Si-wR0" customClass="DetailViewController" customModule="rossk_train_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TiM-V2-YSI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="e7w-Ud-60n">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e7w-Ud-60n" id="8qA-Wb-Jvm">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8WV-Si-wR0" id="KPC-Yi-lNG"/>
+                            <outlet property="delegate" destination="8WV-Si-wR0" id="R1m-j0-6T6"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fwn-jb-4xP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="457" y="-184"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="train_icon" width="60.5" height="75"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

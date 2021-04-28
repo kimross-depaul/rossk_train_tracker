@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		38CBC3C12639E7750008D63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3C02639E7750008D63A /* AppDelegate.swift */; };
 		38CBC3C32639E7750008D63A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3C22639E7750008D63A /* SceneDelegate.swift */; };
-		38CBC3C52639E7750008D63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3C42639E7750008D63A /* ViewController.swift */; };
 		38CBC3C82639E7750008D63A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38CBC3C62639E7750008D63A /* Main.storyboard */; };
 		38CBC3CA2639E7790008D63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38CBC3C92639E7790008D63A /* Assets.xcassets */; };
 		38CBC3CD2639E7790008D63A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38CBC3CB2639E7790008D63A /* LaunchScreen.storyboard */; };
 		38CBC3D82639E7790008D63A /* rossk_train_trackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3D72639E7790008D63A /* rossk_train_trackerTests.swift */; };
 		38CBC3E32639E77A0008D63A /* rossk_train_trackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3E22639E77A0008D63A /* rossk_train_trackerUITests.swift */; };
+		38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC4012639E9110008D63A /* HomeViewController.swift */; };
+		38CBC4072639E9390008D63A /* StopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC4062639E9390008D63A /* StopTableViewController.swift */; };
+		38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC40E2639E9520008D63A /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,6 @@
 		38CBC3BD2639E7750008D63A /* rossk_train_tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rossk_train_tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CBC3C02639E7750008D63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38CBC3C22639E7750008D63A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		38CBC3C42639E7750008D63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		38CBC3C72639E7750008D63A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38CBC3C92639E7790008D63A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38CBC3CC2639E7790008D63A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		38CBC3DE2639E77A0008D63A /* rossk_train_trackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rossk_train_trackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CBC3E22639E77A0008D63A /* rossk_train_trackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rossk_train_trackerUITests.swift; sourceTree = "<group>"; };
 		38CBC3E42639E77A0008D63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38CBC4012639E9110008D63A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = rossk_train_tracker/View/ViewControllers/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		38CBC4062639E9390008D63A /* StopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTableViewController.swift; sourceTree = "<group>"; };
+		38CBC40E2639E9520008D63A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +103,9 @@
 		38CBC3BF2639E7750008D63A /* rossk_train_tracker */ = {
 			isa = PBXGroup;
 			children = (
-				38CBC3C02639E7750008D63A /* AppDelegate.swift */,
-				38CBC3C22639E7750008D63A /* SceneDelegate.swift */,
-				38CBC3C42639E7750008D63A /* ViewController.swift */,
-				38CBC3C62639E7750008D63A /* Main.storyboard */,
-				38CBC3C92639E7790008D63A /* Assets.xcassets */,
-				38CBC3CB2639E7790008D63A /* LaunchScreen.storyboard */,
+				38CBC3F82639E7E10008D63A /* Controller */,
+				38CBC3F72639E7D90008D63A /* View */,
+				38CBC3F62639E7CB0008D63A /* Model */,
 				38CBC3CE2639E7790008D63A /* Info.plist */,
 			);
 			path = rossk_train_tracker;
@@ -126,6 +127,51 @@
 				38CBC3E42639E77A0008D63A /* Info.plist */,
 			);
 			path = rossk_train_trackerUITests;
+			sourceTree = "<group>";
+		};
+		38CBC3F62639E7CB0008D63A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		38CBC3F72639E7D90008D63A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				38CBC3FD2639E83A0008D63A /* ViewControllers */,
+				38CBC3FC2639E81E0008D63A /* Defaults */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		38CBC3F82639E7E10008D63A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38CBC3C02639E7750008D63A /* AppDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38CBC3FC2639E81E0008D63A /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				38CBC3C62639E7750008D63A /* Main.storyboard */,
+				38CBC3C22639E7750008D63A /* SceneDelegate.swift */,
+				38CBC3C92639E7790008D63A /* Assets.xcassets */,
+				38CBC3CB2639E7790008D63A /* LaunchScreen.storyboard */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
+		38CBC3FD2639E83A0008D63A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				38CBC4012639E9110008D63A /* HomeViewController.swift */,
+				38CBC4062639E9390008D63A /* StopTableViewController.swift */,
+				38CBC40E2639E9520008D63A /* DetailViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +304,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38CBC3C52639E7750008D63A /* ViewController.swift in Sources */,
 				38CBC3C12639E7750008D63A /* AppDelegate.swift in Sources */,
+				38CBC4072639E9390008D63A /* StopTableViewController.swift in Sources */,
+				38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */,
 				38CBC3C32639E7750008D63A /* SceneDelegate.swift in Sources */,
+				38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
