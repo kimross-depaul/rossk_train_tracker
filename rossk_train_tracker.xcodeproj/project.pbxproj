@@ -17,6 +17,7 @@
 		38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC4012639E9110008D63A /* HomeViewController.swift */; };
 		38CBC4072639E9390008D63A /* StopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC4062639E9390008D63A /* StopTableViewController.swift */; };
 		38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC40E2639E9520008D63A /* DetailViewController.swift */; };
+		38CBC414263A108D0008D63A /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC413263A108D0008D63A /* Connect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		38CBC4012639E9110008D63A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = rossk_train_tracker/View/ViewControllers/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		38CBC4062639E9390008D63A /* StopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTableViewController.swift; sourceTree = "<group>"; };
 		38CBC40E2639E9520008D63A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		38CBC413263A108D0008D63A /* Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		38CBC3F62639E7CB0008D63A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				38CBC413263A108D0008D63A /* Connect.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			files = (
 				38CBC3C12639E7750008D63A /* AppDelegate.swift in Sources */,
 				38CBC4072639E9390008D63A /* StopTableViewController.swift in Sources */,
+				38CBC414263A108D0008D63A /* Connect.swift in Sources */,
 				38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */,
 				38CBC3C32639E7750008D63A /* SceneDelegate.swift in Sources */,
 				38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */,

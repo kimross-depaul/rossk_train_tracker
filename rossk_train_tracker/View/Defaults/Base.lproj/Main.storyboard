@@ -33,11 +33,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <state key="normal" title="Red Line" image="train_icon"/>
+                                                <connections>
+                                                    <segue destination="cDV-iX-QBw" kind="presentation" id="FX7-cV-dwY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ton-My-wsp">
                                                 <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <state key="normal" title="Orange Line" image="train_icon"/>
+                                                <connections>
+                                                    <segue destination="cDV-iX-QBw" kind="presentation" id="cIA-yb-LSo"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -48,11 +54,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
                                                 <color key="backgroundColor" red="0.043002139929286261" green="0.37078124999999995" blue="0.0065685929937450123" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Green Line" image="train_icon"/>
+                                                <connections>
+                                                    <segue destination="cDV-iX-QBw" kind="presentation" id="uQ7-2p-eSK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL2-if-dWg">
                                                 <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <state key="normal" title="Yellow Line" image="train_icon"/>
+                                                <connections>
+                                                    <segue destination="cDV-iX-QBw" kind="presentation" id="ebj-MX-tj1"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -63,11 +75,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <state key="normal" title="Blue Line" image="train_icon"/>
+                                                <connections>
+                                                    <segue destination="cDV-iX-QBw" kind="presentation" id="Ua3-Ur-YBa"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-4l-v12">
                                                 <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
                                                 <color key="backgroundColor" red="0.37078124999999995" green="0.23587807772400593" blue="0.017983143700757338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Brown Line" image="train_icon"/>
+                                                <connections>
+                                                    <segue destination="cDV-iX-QBw" kind="presentation" id="fpH-sP-IRC"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -78,11 +96,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
                                                 <color key="backgroundColor" red="0.24679749000902279" green="0.065841817844115649" blue="0.37078124999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Purple Line" image="train_icon"/>
+                                                <connections>
+                                                    <segue destination="cDV-iX-QBw" kind="presentation" id="Nt4-kq-jq7"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyC-CC-34F">
                                                 <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
                                                 <color key="backgroundColor" red="0.64910156250000006" green="0.45084185137037824" blue="0.64051404194864914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Pink Line" image="train_icon"/>
+                                                <connections>
+                                                    <segue destination="cDV-iX-QBw" kind="presentation" id="cPK-DO-Bni"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -122,7 +146,7 @@
             <objects>
                 <tableViewController id="cDV-iX-QBw" customClass="StopTableViewController" customModule="rossk_train_tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mFZ-tP-bqV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -174,6 +198,9 @@
             <point key="canvasLocation" x="457" y="-184"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fpH-sP-IRC"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="train_icon" width="60.5" height="75"/>
         <systemColor name="systemBackgroundColor">

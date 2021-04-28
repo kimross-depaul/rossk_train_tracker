@@ -29,17 +29,6 @@ class HomeViewController: UIViewController {
         btnPurple.styleMe();
         btnPink.styleMe();
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension UIButton {
@@ -48,11 +37,11 @@ extension UIButton {
         self.setTitleColor(UIColor.black, for: UIControl.State.normal);
         let imageSize = self.imageView!.image!.size; //self.imageView!.frame.size
         let titleSize = self.titleLabel!.frame.size
-        let test = self.bounds.height;
+   /*     let test = self.bounds.height;
         let test2 = self.frame.height;
         let test3 = self.imageView!.frame.width;
         let rect = self.imageView!.frame;
-        let rect2 = self.imageView!.bounds;
+        let rect2 = self.imageView!.bounds;*/
         let totalHeight = imageSize.height + titleSize.height + padding
         
         self.layer.cornerRadius = 15.0;
