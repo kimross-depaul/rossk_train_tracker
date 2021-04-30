@@ -7,6 +7,8 @@
 
 import UIKit
 
+var work = [String:Any]();
+
 class HomeViewController: UIViewController {
 
     @IBOutlet var btnRed: UIButton!
@@ -17,6 +19,8 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnBrown: UIButton!
     @IBOutlet var btnPurple: UIButton!
     @IBOutlet var btnPink: UIButton!
+    @IBOutlet var lblMessages: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +32,12 @@ class HomeViewController: UIViewController {
         btnBrown.styleMe();
         btnPurple.styleMe();
         btnPink.styleMe();
+        
+        let connect = Connect();
+        
+        connect.loadData(urlString: "https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&rt=Brn&outputType=JSON");
+        
+       /* let locations = Connect.requestList(urlString: "https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&rt=Brn&outputType=JSON", displayLabel: lblMessages );*/
     }
 
 }

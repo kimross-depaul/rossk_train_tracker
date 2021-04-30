@@ -112,6 +112,13 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLK-ud-n1K">
+                                <rect key="frame" x="38" y="737" width="338" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sIP-ry-Qf7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -135,6 +142,7 @@
                         <outlet property="btnPurple" destination="plN-0I-XmB" id="5OW-X2-UA0"/>
                         <outlet property="btnRed" destination="5un-ed-r0g" id="5Cg-4X-j7t"/>
                         <outlet property="btnYellow" destination="BL2-if-dWg" id="LFc-Pj-2Xu"/>
+                        <outlet property="lblMessages" destination="TLK-ud-n1K" id="i7B-ed-AbD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKl-91-TuD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
