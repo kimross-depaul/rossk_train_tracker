@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Train {
+class Train : CTAObject {
     var line: String;
     var stops: [TrainStop];
     

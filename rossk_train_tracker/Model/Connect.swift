@@ -7,10 +7,14 @@
 
 import UIKit
 
+typealias jDict = [String: Any]
+typealias jArray = [Any]
+
 class Connect {
     static let instance = Connect()
     
-    func loadData(urlString: String) {
+    func loadData(parms: [String: String], objType: CTAObjectType, completion: (Result<[TrainStop],SerializationError>) -> Void) {
+        let urlString = CTAObjectFactory.createCTAUrl(parms: ["rt":line], objType: .Train);
         guard let url = URL(string: urlString) else { return }
         
         let session = URLSession.shared;
@@ -25,35 +29,17 @@ class Connect {
             guard let data = data else {return}
             print ("there's data")
             
+            //THIS DO-CATCH NEEDS TO POPULATE AN ARRAY ON THE VIEW CONTROLLER
+            //AND CALL A METHOD ON THAT VIEW CONTROLLER self.tableView.reloadData()
+            //WHERE THAT TABLEVIEW IS ALREADY BEING LOADED BY THAT ARRAY OF OBJECTS (records in the example)
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jDict {
                     //Dictionaries are enclosed with {} and return [String: Any]
-                    guard let root = json["ctatt"] as? [String: Any] else {
+                    guard let root = json["ctatt"] as? jDict else {
                         throw SerializationError.missingElement("Root node 'feed' is missing from json");
                     }
-                    //Arrays are enclosed with [] and return [Any]
-                    guard let entries = root["route"] as? [Any] else {
-                        throw SerializationError.missingElement("There should be an 'route' node beneath the root");
-                    }
                     
-                    for e in entries {
-                        if let entry = e as? [String:Any] {
-                            //@name is an attribute of Route - returns a String
-                            guard let nodeName = entry["@name"] as? String else {
-                                throw SerializationError.missingElement("rn (route number) is missing")
-                            }
-                            //trains are an array of train attributes (route 422, about to stop at station 40380... etc.)
-                            guard let trains = entry["train"] as? [Any] else {
-                                throw SerializationError.missingElement("rn (route number) is missing")
-                            }
-                            for t in trains {
-                                if let thisTrain = t as? [String:Any] {
-                                    print (thisTrain)
-                                }
-                            }
-                            print (nodeName);
-                        }
-                    }
+                    CTAObjectFactory.createCTAObject(jDict: root, objType: objType)
                 }
             } catch SerializationError.missingElement(let msg) {
                 self.logError("Missing: \(msg)");
@@ -72,10 +58,9 @@ class Connect {
         print(message);
     }
     
-    
-    enum SerializationError: Error {
-        case missingElement(String)
-        case invalidResponse(String, Any)
-    }
-}
 
+}
+enum SerializationError: Error {
+    case missingElement(String)
+    case invalidResponse(String, Any)
+}

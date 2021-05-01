@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TrainStop {
+class TrainStop: CTAObject {
     var name: String;
     var isHandicapAssessible: Bool;
     

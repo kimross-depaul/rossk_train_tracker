@@ -7,34 +7,49 @@
 
 import UIKit
 
+var line: String = "";
+var trainStops: [TrainStop]?;
+
 class StopTableViewController: UITableViewController {
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
       
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        let connect = Connect();
+        connect.loadData(parms: ["rt":line], objType: .TrainStop, completion: {result in
+            print("done loading");
+            let apiResult = 
+            self.tableView.reloadData();
+        });
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1;
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return trainStops?.count ?? 0;
     }
-
-    /*
+   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        
+        if let sCell = cell as? StopTableCell {
+            if let stops = trainStops {
+                let i = indexPath.row;
+                sCell.lblStopName.text = stops[i].name;
+            }
+        }
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
