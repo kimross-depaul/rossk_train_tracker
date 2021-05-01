@@ -12,7 +12,7 @@ var trainStops: [TrainStop]?;
 
 class StopTableViewController: UITableViewController {
 
-
+    var isDataLoaded = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +23,14 @@ class StopTableViewController: UITableViewController {
         let connect = Connect();
         connect.loadData(parms: ["rt":line], objType: .TrainStop, completion: {result in
             print("done loading");
-            let apiResult = 
-            self.tableView.reloadData();
+            switch result {
+            case .failure(let error) :
+                print ("error happened");
+            case .success(let ary):
+                print ("no error happened")
+                trainStops = ary;
+            }
+
         });
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,15 +44,16 @@ class StopTableViewController: UITableViewController {
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TrainStop", for: indexPath)
         
-        if let sCell = cell as? StopTableCell {
-            if let stops = trainStops {
-                let i = indexPath.row;
-                sCell.lblStopName.text = stops[i].name;
+        if isDataLoaded {
+            if let sCell = cell as? StopTableCell {
+                if let stops = trainStops {
+                    let i = indexPath.row;
+                    sCell.lblStopName.text = stops[i].name;
+                }
             }
         }
-
         return cell
     }
     

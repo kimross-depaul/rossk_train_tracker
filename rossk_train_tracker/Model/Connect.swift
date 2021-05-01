@@ -39,7 +39,7 @@ class Connect {
                         throw SerializationError.missingElement("Root node 'feed' is missing from json");
                     }
                     
-                    CTAObjectFactory.createCTAObject(jDict: root, objType: objType)
+                    trainStops = CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop]
                 }
             } catch SerializationError.missingElement(let msg) {
                 self.logError("Missing: \(msg)");
@@ -50,7 +50,8 @@ class Connect {
             }
             //self.isDataLoaded = true;
             DispatchQueue.main.async {
-                //self.tableView.reloadData();
+                isDataLoaded = true;
+                self.tableView.reloadData();
             }
         }.resume();
     }

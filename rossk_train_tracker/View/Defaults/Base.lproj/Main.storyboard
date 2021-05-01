@@ -158,24 +158,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="85" id="IdK-gY-sKq" customClass="StopTableCell" customModule="rossk_train_tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrainStop" rowHeight="85" id="IdK-gY-sKq" customClass="StopTableCell" customModule="rossk_train_tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IdK-gY-sKq" id="BBz-z3-nMK">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEF-nQ-ZUC">
-                                            <rect key="frame" x="20" y="11" width="56" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEF-nQ-ZUC">
+                                            <rect key="frame" x="157" y="29" width="180" height="27"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="top" secondItem="BBz-z3-nMK" secondAttribute="top" constant="11" id="9p9-jo-242"/>
-                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="leading" secondItem="BBz-z3-nMK" secondAttribute="leading" constant="20" symbolic="YES" id="OlO-EE-w5M"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TEF-nQ-ZUC" secondAttribute="trailing" constant="15" id="aW3-JN-unV"/>
+                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="centerY" secondItem="BBz-z3-nMK" secondAttribute="centerY" id="8oL-F7-O4z"/>
+                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="centerX" secondItem="BBz-z3-nMK" secondAttribute="centerX" id="pSY-zk-7aD"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

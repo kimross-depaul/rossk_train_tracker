@@ -59,7 +59,7 @@ class CTAObjectFactory {
     }
 
     static func createTrainStops(root: jDict) -> Result<[TrainStop],SerializationError> {
-        var trainStops = [TrainStop]();
+        var trainStopResults = [TrainStop]();
         guard let entries = root["route"] as? jArray else {
             return .failure(SerializationError.missingElement("There should be an 'route' node beneath the root"));
         }
@@ -78,12 +78,12 @@ class CTAObjectFactory {
                     if let thisTrain = t as? [String:Any] {
                         print (thisTrain);
                         let newStop = TrainStop(name: thisTrain["nextStaNm"] as! String, isHandicapAccessible: true);
-                        trainStops.append(newStop);
+                        trainStopResults.append(newStop);
                     }
                 }
                 print (nodeName);
             }
         }
-        return .success(trainStops);
+        return .success(trainStopResults);
     }
 }
