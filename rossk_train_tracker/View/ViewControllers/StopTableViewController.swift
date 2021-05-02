@@ -7,7 +7,7 @@
 
 import UIKit
 
-var line: String = "";
+var line: String = "blue"; // COME BACK
 var trainStops: [TrainStop]?;
 
 class StopTableViewController: UITableViewController {
@@ -20,8 +20,8 @@ class StopTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let connect = Connect();
-        connect.loadData(parms: ["rt":line], objType: .TrainStop, completion: {result in
+        
+        Connect.loadData(parms: ["rt":line], objType: .TrainStop, sender: self, completion: {result in
             print("done loading");
             switch result {
             case .failure(let error) :

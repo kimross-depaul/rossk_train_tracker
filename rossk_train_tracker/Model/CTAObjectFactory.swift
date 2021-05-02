@@ -36,21 +36,12 @@ class CTAObjectFactory {
             }
         }
     }
-/*    static func createCTAObject(jArray: jArray, objType: CTAObjectType) -> CTAObject {
-        switch objType {
-        case .Train:
-            return Train(line: "");
-        case .Arrival:
-            return Arrival();
-        case .TrainStop:
-            return TrainStop(name: "", isHandicapAccessible: true);
-        }
-    }*/
     
     static func createCTAUrl(parms: [String:String], objType: CTAObjectType) -> String {
         switch objType {
         case .Train:
-            return "https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&rt=\(parms["rt"] ?? "")&outputType=JSON";
+            return "https://data.cityofchicago.org/resource/8pix-ypme.json?\(parms["rt"] ?? "")=true";
+        //"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&rt=\(parms["rt"] ?? "")&outputType=JSON";
         case .Arrival:
             return "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&mapid=\(String(describing: parms["mapid"]))&outputType=JSON";
         case .TrainStop:

@@ -33,7 +33,14 @@ class HomeViewController: UIViewController {
         btnPurple.styleMe();
         btnPink.styleMe();
         
-      
+        Connect.loadData(parms: ["rt":"Blue"], objType: .Train, sender: self, completion: { result in
+            switch result {
+            case .success(let ary):
+                print(ary);
+            case .failure(let error):
+                print(error);
+            }
+        });
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print ("\(segue.identifier)");

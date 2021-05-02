@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38848511263E3EDC00211E2C /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38848510263E3EDC00211E2C /* SerializationError.swift */; };
+		38848516263E3F1E00211E2C /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38848515263E3F1E00211E2C /* Observer.swift */; };
+		3884851B263E3F2A00211E2C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3884851A263E3F2A00211E2C /* Observable.swift */; };
 		38CBC3C12639E7750008D63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3C02639E7750008D63A /* AppDelegate.swift */; };
 		38CBC3C32639E7750008D63A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3C22639E7750008D63A /* SceneDelegate.swift */; };
 		38CBC3C82639E7750008D63A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38CBC3C62639E7750008D63A /* Main.storyboard */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38848510263E3EDC00211E2C /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
+		38848515263E3F1E00211E2C /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		3884851A263E3F2A00211E2C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		38CBC3BD2639E7750008D63A /* rossk_train_tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rossk_train_tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CBC3C02639E7750008D63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38CBC3C22639E7750008D63A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +175,9 @@
 			isa = PBXGroup;
 			children = (
 				38CBC3C02639E7750008D63A /* AppDelegate.swift */,
+				38848510263E3EDC00211E2C /* SerializationError.swift */,
+				38848515263E3F1E00211E2C /* Observer.swift */,
+				3884851A263E3F2A00211E2C /* Observable.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,9 +335,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				38CBC438263DABB20008D63A /* StopTableCell.swift in Sources */,
+				3884851B263E3F2A00211E2C /* Observable.swift in Sources */,
 				38CBC3C12639E7750008D63A /* AppDelegate.swift in Sources */,
 				38CBC4072639E9390008D63A /* StopTableViewController.swift in Sources */,
+				38848511263E3EDC00211E2C /* SerializationError.swift in Sources */,
 				38CBC414263A108D0008D63A /* ConnectOLD.swift in Sources */,
+				38848516263E3F1E00211E2C /* Observer.swift in Sources */,
 				38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */,
 				38CBC421263BA15C0008D63A /* Train.swift in Sources */,
 				38CBC433263D9DDE0008D63A /* CTAObjectFactory.swift in Sources */,

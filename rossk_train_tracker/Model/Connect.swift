@@ -11,9 +11,10 @@ typealias jDict = [String: Any]
 typealias jArray = [Any]
 
 class Connect {
-    static let instance = Connect()
+    //static let instance = Connect()
+    //var observers = [Observer]();
     
-    func loadData(parms: [String: String], objType: CTAObjectType, completion: (Result<[TrainStop],SerializationError>) -> Void) {
+    static func loadData(parms: [String: String], objType: CTAObjectType, sender: UIViewController, completion: (Result<[TrainStop],SerializationError>) -> Void) {
         let urlString = CTAObjectFactory.createCTAUrl(parms: ["rt":line], objType: .Train);
         guard let url = URL(string: urlString) else { return }
         
@@ -22,7 +23,7 @@ class Connect {
         
         session.dataTask(with: request) { data, response, error in
             guard error == nil else {
-                self.logError(error?.localizedDescription ?? "Unknown Error");
+                Connect.logError(error?.localizedDescription ?? "Unknown Error");
                 return;
             }
             print("seeing if there's data")
@@ -34,34 +35,42 @@ class Connect {
             //WHERE THAT TABLEVIEW IS ALREADY BEING LOADED BY THAT ARRAY OF OBJECTS (records in the example)
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jDict {
-                    //Dictionaries are enclosed with {} and return [String: Any]
                     guard let root = json["ctatt"] as? jDict else {
                         throw SerializationError.missingElement("Root node 'feed' is missing from json");
                     }
-                    
                     trainStops = CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop]
                 }
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jArray {
+                    for node in json {
+                        if let dict = node as? jDict {
+                            print(dict["stop_name"])
+                            print(dict["ada"])
+                            print(dict["direction_id"])
+                            print(dict["stop_id"])
+                        }
+                    }
+                }
+                
             } catch SerializationError.missingElement(let msg) {
-                self.logError("Missing: \(msg)");
+                Connect.logError("Missing: \(msg)");
             } catch SerializationError.invalidResponse(let msg, let data) {
-                self.logError("Invalid:  \(msg), \(data)");
+                Connect.logError("Invalid:  \(msg), \(data)");
             } catch let error as NSError {
-                self.logError ("Other Error: \(error.localizedDescription)");
+                Connect.logError ("Other Error: \(error.localizedDescription)");
             }
             //self.isDataLoaded = true;
             DispatchQueue.main.async {
-                isDataLoaded = true;
-                self.tableView.reloadData();
+                if let stopSender = sender as? StopTableViewController {
+                    stopSender.isDataLoaded = true;
+                    stopSender.tableView.reloadData();
+                }
             }
         }.resume();
     }
-    func logError(_ message: String) {
+    static func logError(_ message: String) {
         print(message);
     }
     
 
 }
-enum SerializationError: Error {
-    case missingElement(String)
-    case invalidResponse(String, Any)
-}
+
