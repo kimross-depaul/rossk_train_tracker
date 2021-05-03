@@ -9,11 +9,17 @@ import Foundation
 
 class TrainStop: CTAObject {
     var name: String;
-    var isHandicapAssessible: Bool;
+    var isHandicapAssessible: Int;
+    var stopId: String
     
-    init (name: String, isHandicapAccessible: Bool) {
+    init (name: String, isHandicapAccessible: Int, stopId: String) {
         self.name = name;
         self.isHandicapAssessible = isHandicapAccessible;
-        
+        self.stopId = stopId;
+    }
+    init () {
+        name = "Data is currently unavailable";
+        isHandicapAssessible = 0;
+        stopId = "0";
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-var work = [String:Any]();
+
 
 class HomeViewController: UIViewController {
 
@@ -33,14 +33,7 @@ class HomeViewController: UIViewController {
         btnPurple.styleMe();
         btnPink.styleMe();
         
-        Connect.loadData(parms: ["rt":"Blue"], objType: .Train, sender: self, completion: { result in
-            switch result {
-            case .success(let ary):
-                print(ary);
-            case .failure(let error):
-                print(error);
-            }
-        });
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print ("\(segue.identifier)");
@@ -59,14 +52,14 @@ extension UIButton {
         let test3 = self.imageView!.frame.width;
         let rect = self.imageView!.frame;
         let rect2 = self.imageView!.bounds;*/
-        let totalHeight = imageSize.height + titleSize.height + padding
+        let totalHeight = imageSize.height + titleSize.height + padding + 20.0
         
         self.layer.cornerRadius = 15.0;
 
         self.imageEdgeInsets = UIEdgeInsets(
             top: -(totalHeight - imageSize.height),
             left: 0,
-            bottom: 0,
+            bottom: -40,
             right: -titleSize.width
         )
         self.titleEdgeInsets = UIEdgeInsets(

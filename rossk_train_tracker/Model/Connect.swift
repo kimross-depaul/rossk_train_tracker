@@ -41,13 +41,8 @@ class Connect {
                     trainStops = CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop]
                 }
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jArray {
-                    for node in json {
-                        if let dict = node as? jDict {
-                            print(dict["stop_name"])
-                            print(dict["ada"])
-                            print(dict["direction_id"])
-                            print(dict["stop_id"])
-                        }
+                    if let newTrains = CTAObjectFactory.createCTAObject(jAry: json, objType: .Train) as? [Train] {
+                        trains? = newTrains
                     }
                 }
                 

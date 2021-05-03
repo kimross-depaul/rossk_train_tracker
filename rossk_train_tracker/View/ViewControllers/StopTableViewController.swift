@@ -9,6 +9,7 @@ import UIKit
 
 var line: String = "blue"; // COME BACK
 var trainStops: [TrainStop]?;
+var trains: [Train]?;
 
 class StopTableViewController: UITableViewController {
 
@@ -20,7 +21,17 @@ class StopTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        trains = [Train]();
         
+        Connect.loadData(parms: ["rt":line.lowercased()], objType: .Train, sender: self, completion: { result in
+            switch result {
+            case .success(let ary):
+                print(ary);
+            case .failure(let error):
+                print(error);
+            }
+        });
+        /*
         Connect.loadData(parms: ["rt":line], objType: .TrainStop, sender: self, completion: {result in
             print("done loading");
             switch result {
@@ -31,7 +42,7 @@ class StopTableViewController: UITableViewController {
                 trainStops = ary;
             }
 
-        });
+        });*/
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -40,24 +51,43 @@ class StopTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return trainStops?.count ?? 0;
+        var stopCount = 0;
+        
+        guard let trainLine = trains else {
+            return 1;
+        }
+        for rootTrain in trainLine {
+            stopCount += rootTrain.trainStops?.count ?? 0;
+        }
+        return stopCount;
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrainStop", for: indexPath)
         
         if isDataLoaded {
+            guard let trainLine = trains?[0] else {
+                return cell;
+            }
             if let sCell = cell as? StopTableCell {
-                if let stops = trainStops {
-                    let i = indexPath.row;
-                    sCell.lblStopName.text = stops[i].name;
-                }
+                let whichStop = trainLine.getStop(indexPath.row)
+                sCell.lblStopName.text = whichStop.name + " (" + whichStop.stopId + ")";
             }
         }
-        return cell
+        return cell;
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination as? DetailViewController {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                //subViewController.categoryMenuItems = getMenuItemsForCategory(category: categories[indexPath.row]);
+                detailViewController.selectedStop = trains?[0].getStop(indexPath.row) ?? TrainStop();
+            }
+        }
     }
     
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "To_Detail", sender: self)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

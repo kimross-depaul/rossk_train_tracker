@@ -158,11 +158,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrainStop" rowHeight="85" id="IdK-gY-sKq" customClass="StopTableCell" customModule="rossk_train_tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="TrainStop" rowHeight="85" id="IdK-gY-sKq" customClass="StopTableCell" customModule="rossk_train_tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IdK-gY-sKq" id="BBz-z3-nMK">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="370" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEF-nQ-ZUC">
@@ -179,6 +179,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lblStopName" destination="TEF-nQ-ZUC" id="pjr-4B-BlQ"/>
+                                    <segue destination="8WV-Si-wR0" kind="presentation" identifier="To_Detail" trigger="accessoryAction" id="g85-Gi-Um2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -197,7 +198,7 @@
             <objects>
                 <tableViewController id="8WV-Si-wR0" customClass="DetailViewController" customModule="rossk_train_tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TiM-V2-YSI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -215,6 +216,7 @@
                             <outlet property="delegate" destination="8WV-Si-wR0" id="R1m-j0-6T6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="itl-Qx-Pha"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fwn-jb-4xP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
