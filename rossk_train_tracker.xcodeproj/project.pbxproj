@@ -27,6 +27,7 @@
 		38CBC42B263BA1950008D63A /* TrainStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC42A263BA1950008D63A /* TrainStop.swift */; };
 		38CBC433263D9DDE0008D63A /* CTAObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC432263D9DDE0008D63A /* CTAObjectFactory.swift */; };
 		38CBC438263DABB20008D63A /* StopTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC437263DABB10008D63A /* StopTableCell.swift */; };
+		38D27B95263F897500EFB8AF /* ArrivalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D27B94263F897500EFB8AF /* ArrivalViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		38CBC42A263BA1950008D63A /* TrainStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStop.swift; sourceTree = "<group>"; };
 		38CBC432263D9DDE0008D63A /* CTAObjectFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAObjectFactory.swift; sourceTree = "<group>"; };
 		38CBC437263DABB10008D63A /* StopTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTableCell.swift; sourceTree = "<group>"; };
+		38D27B94263F897500EFB8AF /* ArrivalViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				38CBC4062639E9390008D63A /* StopTableViewController.swift */,
 				38CBC40E2639E9520008D63A /* DetailViewController.swift */,
 				38CBC437263DABB10008D63A /* StopTableCell.swift */,
+				38D27B94263F897500EFB8AF /* ArrivalViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				38CBC433263D9DDE0008D63A /* CTAObjectFactory.swift in Sources */,
 				38CBC3C32639E7750008D63A /* SceneDelegate.swift in Sources */,
 				38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */,
+				38D27B95263F897500EFB8AF /* ArrivalViewCell.swift in Sources */,
 				38CBC42B263BA1950008D63A /* TrainStop.swift in Sources */,
 				38CBC426263BA1800008D63A /* Arrival.swift in Sources */,
 				38CBC419263B9D560008D63A /* Connect.swift in Sources */,

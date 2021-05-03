@@ -7,24 +7,48 @@
 
 import UIKit
 
+var arrivals = [Arrival]();
+
 class DetailViewController: UITableViewController {
     var selectedStop = TrainStop();
+    var isDataLoaded = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("MADE IT! Selected stop is \(selectedStop.name)");
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        Connect.loadData(parms: ["mapid":selectedStop.stopId], objType: .Arrival, sender: self, completion: { result in
+            switch result {
+            case .success(let ary):
+                print(ary);
+            case .failure(let error):
+                print(error);
+            }
+        });
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1;
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return arrivals.count;
+    }
+   
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArrivalCell", for: indexPath)
+        
+        if isDataLoaded {
+            if let sCell = cell as? ArrivalViewCell {
+                let whichArrival = arrivals[indexPath.row];
+                sCell.lblDetails.text = "\(line) Line #\(whichArrival.routeNum)";
+            }
+        }
+        return cell;
     }
 
     /*

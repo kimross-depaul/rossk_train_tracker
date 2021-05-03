@@ -31,18 +31,6 @@ class StopTableViewController: UITableViewController {
                 print(error);
             }
         });
-        /*
-        Connect.loadData(parms: ["rt":line], objType: .TrainStop, sender: self, completion: {result in
-            print("done loading");
-            switch result {
-            case .failure(let error) :
-                print ("error happened");
-            case .success(let ary):
-                print ("no error happened")
-                trainStops = ary;
-            }
-
-        });*/
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

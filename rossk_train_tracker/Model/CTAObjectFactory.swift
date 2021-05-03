@@ -21,7 +21,13 @@ class CTAObjectFactory {
     static func createCTAObject(jDict: jDict, objType: CTAObjectType) -> [CTAObject] {
         switch objType {
         case .Arrival:
-            return [Arrival]();
+            let dataResult = createArrivals(root: jDict);
+            switch dataResult {
+            case .failure(let error):
+                return [Arrival]();
+            case .success(let ary):
+                return ary;
+            }
         case .TrainStop:
             //If you wanted a list of train stops, those go on the StopTableViewController
             let dataResult = createTrainStops(root: jDict);
@@ -49,7 +55,7 @@ class CTAObjectFactory {
                 return newTrains;
             }
         case .Arrival:
-            print("invalid choice - COME BACK");
+            print ("invalid choice - COME BACK");
         case .TrainStop:
             print("invalid choice - COME BACK");
         }
@@ -61,11 +67,11 @@ class CTAObjectFactory {
         case .Train:
             let selectedLine = parms["rt"]?.lowercased() ?? "";
             return "https://data.cityofchicago.org/resource/8pix-ypme.json?\(selectedLine)=true";
-        //"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&rt=\(parms["rt"] ?? "")&outputType=JSON";
         case .Arrival:
-            return "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&mapid=\(String(describing: parms["mapid"]))&outputType=JSON";
+            let mapid = parms["mapid"] ?? "";
+            return "https://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&mapid=\(mapid)&outputType=JSON";
         case .TrainStop:
-            return "http://lapi.transitchicago.com/api/1.0/ttfollow.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&runnumber=\(String(describing: parms["runnumber"]))&outputType=JSON";
+            return "https://lapi.transitchicago.com/api/1.0/ttfollow.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&runnumber=\(String(describing: parms["runnumber"]))&outputType=JSON";
         }
     }
 
@@ -118,6 +124,22 @@ class CTAObjectFactory {
             }
         }
         return .success(retTrains);
-        
+    }
+    static func createArrivals(root: jDict) -> Result<[Arrival],SerializationError>{
+        var retArrivals = [Arrival]();
+        if let etas = root["eta"] as? jArray {
+            for eta in etas {
+                if let eta = eta as? jDict {
+                    print (eta["stpDe"], eta["destNm"], eta["arrT"]);
+                    let rn = eta["rn"] as? String ?? "?"
+                    let staNm = eta["staNm"] as? String ?? "Unable to load stations."
+                    let timePred = eta["arrT"] as? String ?? ""
+                    let a = Arrival(routeNum: rn, stopName: staNm, timePrediction: timePred)
+                    retArrivals.append(a);
+                }
+            }
+
+        }
+        return .success(retArrivals);
     }
 }

@@ -202,13 +202,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="e7w-Ud-60n">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArrivalCell" id="e7w-Ud-60n" customClass="ArrivalViewCell" customModule="rossk_train_tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e7w-Ud-60n" id="8qA-Wb-Jvm">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFw-cw-413">
+                                            <rect key="frame" x="82.5" y="11.5" width="249" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="249" id="f9i-eo-bBx"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dFw-cw-413" firstAttribute="centerY" secondItem="8qA-Wb-Jvm" secondAttribute="centerY" id="1SD-GE-cjR"/>
+                                        <constraint firstItem="dFw-cw-413" firstAttribute="centerX" secondItem="8qA-Wb-Jvm" secondAttribute="centerX" id="9WL-s1-ydX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblDetails" destination="dFw-cw-413" id="t4P-Uq-RGt"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -220,7 +238,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fwn-jb-4xP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="457" y="-184"/>
+            <point key="canvasLocation" x="456.52173913043481" y="-184.15178571428569"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -15,7 +15,7 @@ class Connect {
     //var observers = [Observer]();
     
     static func loadData(parms: [String: String], objType: CTAObjectType, sender: UIViewController, completion: (Result<[TrainStop],SerializationError>) -> Void) {
-        let urlString = CTAObjectFactory.createCTAUrl(parms: ["rt":line], objType: .Train);
+        let urlString = CTAObjectFactory.createCTAUrl(parms: parms, objType: objType);
         guard let url = URL(string: urlString) else { return }
         
         let session = URLSession.shared;
@@ -38,11 +38,19 @@ class Connect {
                     guard let root = json["ctatt"] as? jDict else {
                         throw SerializationError.missingElement("Root node 'feed' is missing from json");
                     }
-                    trainStops = CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop]
+                    if objType == .Arrival {
+                        if let newArrivals = CTAObjectFactory.createCTAObject(jDict: root, objType: .Arrival) as? [Arrival] {
+                            arrivals = newArrivals;
+                        }
+                    } else {
+                        trainStops = CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop]
+                    }
                 }
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jArray {
-                    if let newTrains = CTAObjectFactory.createCTAObject(jAry: json, objType: .Train) as? [Train] {
-                        trains? = newTrains
+                    if objType == .Train {
+                        if let newTrains = CTAObjectFactory.createCTAObject(jAry: json, objType: .Train) as? [Train] {
+                            trains? = newTrains
+                        }
                     }
                 }
                 
@@ -58,6 +66,10 @@ class Connect {
                 if let stopSender = sender as? StopTableViewController {
                     stopSender.isDataLoaded = true;
                     stopSender.tableView.reloadData();
+                }
+                if let arrivalSender = sender as? DetailViewController {
+                    arrivalSender.isDataLoaded = true;
+                    arrivalSender.tableView.reloadData();
                 }
             }
         }.resume();
