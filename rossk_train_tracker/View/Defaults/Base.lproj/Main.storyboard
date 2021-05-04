@@ -192,6 +192,7 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
+                                    <outlet property="barCircle" destination="XyS-34-hDs" id="kce-Sh-I1X"/>
                                     <outlet property="lblStopName" destination="TEF-nQ-ZUC" id="pjr-4B-BlQ"/>
                                     <segue destination="8WV-Si-wR0" kind="presentation" identifier="To_Detail" trigger="accessoryAction" id="g85-Gi-Um2"/>
                                 </connections>

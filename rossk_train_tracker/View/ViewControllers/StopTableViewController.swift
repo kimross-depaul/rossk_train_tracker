@@ -59,7 +59,13 @@ class StopTableViewController: UITableViewController {
             }
             if let sCell = cell as? StopTableCell {
                 let whichStop = trainLine.getStop(indexPath.row)
-                sCell.lblStopName.text = whichStop.name + " (" + whichStop.stopId + ")";
+                sCell.lblStopName.text = whichStop.name;
+                if whichStop.isHandicapAssessible == 1 {
+                    sCell.lblStopName.text = whichStop.name + " ♿️"
+                }else {
+
+                }
+                sCell.barCircle.setColor(strColor: line);
             }
         }
         return cell;

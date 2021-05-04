@@ -62,11 +62,23 @@ class CTAObjectFactory {
         return [Train]();
     }
     
+    //Lines from City of Chicago:  red, blue, g, brn, p, y, pnk, o
+    //Lines from Chicago Transit:  red, blue, g, brn, p, y, pink, org
+    
     static func createCTAUrl(parms: [String:String], objType: CTAObjectType) -> String {
         switch objType {
         case .Train:
             let selectedLine = parms["rt"]?.lowercased() ?? "";
-            return "https://data.cityofchicago.org/resource/8pix-ypme.json?\(selectedLine)=true";
+            var translatedLine = "";
+            switch selectedLine {
+            case "pink":
+                translatedLine = "pnk";
+            case "org":
+                translatedLine = "o";
+            default:
+                translatedLine = selectedLine;
+            }
+            return "https://data.cityofchicago.org/resource/8pix-ypme.json?\(translatedLine)=true";
         case .Arrival:
             let mapid = parms["mapid"] ?? "";
             return "https://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&mapid=\(mapid)&outputType=JSON";
@@ -74,7 +86,7 @@ class CTAObjectFactory {
             return "https://lapi.transitchicago.com/api/1.0/ttfollow.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&runnumber=\(String(describing: parms["runnumber"]))&outputType=JSON";
         }
     }
-
+    
     static func createTrainStops(root: jDict) -> Result<[TrainStop],SerializationError> {
         var trainStopResults = [TrainStop]();
         guard let entries = root["route"] as? jArray else {
