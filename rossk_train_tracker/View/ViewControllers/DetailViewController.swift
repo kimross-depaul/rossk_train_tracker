@@ -59,10 +59,14 @@ class DetailViewController: UITableViewController {
         if isDataLoaded {
             if let sCell = cell as? ArrivalViewCell {
                 let whichArrival = arrivals[indexPath.row];
-                sCell.lblDetails.text = "\(line) Line #\(whichArrival.routeNum)";
-                sCell.lblMain.text = "\(whichArrival.svcToward) \(whichArrival.stopName)";
+                sCell.lblDetails.text = "\(whichArrival.stopName) #\(whichArrival.routeNum)"; //"\(line) Line #\(whichArrival.routeNum)";
+                sCell.lblMain.text = "\(whichArrival.svcToward)";
                 if let thisOnesTime = whichArrival.timePrediction {
-                    sCell.lblMinutes.text = formatter.string(from: now, to: thisOnesTime)! + " Min.";
+                    var minutesLeft = formatter.string(from: now, to: thisOnesTime)! + " Min.";
+                    if minutesLeft == "0 Min." {
+                        minutesLeft = "Arriving"
+                    }
+                    sCell.lblMinutes.text = minutesLeft;
                 }else {
                     sCell.lblMinutes.text = "Unavailable";
                 }

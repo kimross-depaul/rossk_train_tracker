@@ -32,11 +32,14 @@ class HomeViewController: UIViewController {
         btnBrown.styleMe();
         btnPurple.styleMe();
         btnPink.styleMe();
-        
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true);
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true);
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print ("\(segue.identifier)");
         line = segue.identifier ?? "";
     }
 
