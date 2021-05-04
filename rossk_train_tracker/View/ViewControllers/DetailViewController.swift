@@ -41,11 +41,20 @@ class DetailViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArrivalCell", for: indexPath)
+        let now = Date()
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute]
         
         if isDataLoaded {
             if let sCell = cell as? ArrivalViewCell {
                 let whichArrival = arrivals[indexPath.row];
                 sCell.lblDetails.text = "\(line) Line #\(whichArrival.routeNum)";
+                sCell.lblMain.text = "\(whichArrival.svcToward) \(whichArrival.stopName)";
+                if let thisOnesTime = whichArrival.timePrediction {
+                    sCell.lblMinutes.text = formatter.string(from: now, to: thisOnesTime)! + " Min.";
+                }else {
+                    sCell.lblMinutes.text = "Unavailable";
+                }
             }
         }
         return cell;

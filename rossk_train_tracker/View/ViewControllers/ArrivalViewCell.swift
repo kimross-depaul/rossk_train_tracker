@@ -10,6 +10,8 @@ import UIKit
 class ArrivalViewCell: UITableViewCell {
 
     @IBOutlet var lblDetails: UILabel!
+    @IBOutlet var lblMain: UILabel!
+    @IBOutlet var lblMinutes: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

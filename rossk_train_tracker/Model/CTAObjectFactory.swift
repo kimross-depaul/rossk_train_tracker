@@ -130,11 +130,11 @@ class CTAObjectFactory {
         if let etas = root["eta"] as? jArray {
             for eta in etas {
                 if let eta = eta as? jDict {
-                    print (eta["stpDe"], eta["destNm"], eta["arrT"]);
                     let rn = eta["rn"] as? String ?? "?"
                     let staNm = eta["staNm"] as? String ?? "Unable to load stations."
                     let timePred = eta["arrT"] as? String ?? ""
-                    let a = Arrival(routeNum: rn, stopName: staNm, timePrediction: timePred)
+                    let svcToward = eta["stpDe"] as? String ?? ""
+                    let a = Arrival(routeNum: rn, stopName: staNm, svcToward: svcToward, timePrediction: timePred)
                     retArrivals.append(a);
                 }
             }
