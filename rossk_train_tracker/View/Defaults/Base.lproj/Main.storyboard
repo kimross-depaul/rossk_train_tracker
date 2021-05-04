@@ -24,13 +24,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-p0-bES">
-                                <rect key="frame" x="38.5" y="189" width="337" height="375"/>
+                                <rect key="frame" x="47" y="189" width="320" height="333"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-zU-3rl">
-                                        <rect key="frame" x="0.0" y="0.0" width="337" height="75"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5un-ed-r0g">
-                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <state key="normal" title="Red Line" image="train_icon"/>
                                                 <connections>
@@ -38,7 +38,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ton-My-wsp">
-                                                <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
+                                                <rect key="frame" x="170" y="0.0" width="150" height="64.5"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <state key="normal" title="Orange Line" image="train_icon"/>
                                                 <connections>
@@ -48,10 +48,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="smc-eg-fnz">
-                                        <rect key="frame" x="0.0" y="100" width="337" height="75"/>
+                                        <rect key="frame" x="0.0" y="89.5" width="320" height="64.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-Lk-Otb">
-                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
                                                 <color key="backgroundColor" red="0.043002139929286261" green="0.37078124999999995" blue="0.0065685929937450123" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Green Line" image="train_icon"/>
                                                 <connections>
@@ -59,7 +59,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL2-if-dWg">
-                                                <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
+                                                <rect key="frame" x="170" y="0.0" width="150" height="64.5"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <state key="normal" title="Yellow Line" image="train_icon"/>
                                                 <connections>
@@ -69,10 +69,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pt8-TE-65b">
-                                        <rect key="frame" x="0.0" y="200" width="337" height="75"/>
+                                        <rect key="frame" x="0.0" y="179" width="320" height="64.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-d9-lCE">
-                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <state key="normal" title="Blue Line" image="train_icon"/>
                                                 <connections>
@@ -80,7 +80,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-4l-v12">
-                                                <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
+                                                <rect key="frame" x="170" y="0.0" width="150" height="64.5"/>
                                                 <color key="backgroundColor" red="0.37078124999999995" green="0.23587807772400593" blue="0.017983143700757338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Brown Line" image="train_icon"/>
                                                 <connections>
@@ -90,10 +90,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dAY-Ti-8bE">
-                                        <rect key="frame" x="0.0" y="300" width="337" height="75"/>
+                                        <rect key="frame" x="0.0" y="268.5" width="320" height="64.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plN-0I-XmB">
-                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
                                                 <color key="backgroundColor" red="0.24679749000902279" green="0.065841817844115649" blue="0.37078124999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Purple Line" image="train_icon"/>
                                                 <connections>
@@ -101,8 +101,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyC-CC-34F">
-                                                <rect key="frame" x="178.5" y="0.0" width="158.5" height="75"/>
-                                                <color key="backgroundColor" red="0.64910156250000006" green="0.45084185137037824" blue="0.64051404194864914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="170" y="0.0" width="150" height="64.5"/>
+                                                <color key="backgroundColor" red="1" green="0.4882920080622809" blue="0.68212687150684415" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Pink Line" image="train_icon"/>
                                                 <connections>
                                                     <segue destination="cDV-iX-QBw" kind="presentation" identifier="Pink" id="cPK-DO-Bni"/>
@@ -153,30 +153,41 @@
         <scene sceneID="i8m-wG-KKh">
             <objects>
                 <tableViewController id="cDV-iX-QBw" customClass="StopTableViewController" customModule="rossk_train_tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mFZ-tP-bqV">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mFZ-tP-bqV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrainStop" rowHeight="49" id="IdK-gY-sKq" customClass="StopTableCell" customModule="rossk_train_tracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="49"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrainStop" rowHeight="102" id="IdK-gY-sKq" customClass="StopTableCell" customModule="rossk_train_tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IdK-gY-sKq" id="BBz-z3-nMK">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyS-34-hDs" customClass="LineCircle" customModule="rossk_train_tracker" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="0.0" width="30" height="102"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="Or7-Hn-a3b"/>
+                                            </constraints>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEF-nQ-ZUC">
-                                            <rect key="frame" x="75" y="10" width="85.5" height="30"/>
+                                            <rect key="frame" x="58" y="40.5" width="336" height="21"/>
                                             <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="leading" secondItem="BBz-z3-nMK" secondAttribute="leading" constant="75" id="InH-bj-gtd"/>
-                                        <constraint firstAttribute="bottom" secondItem="TEF-nQ-ZUC" secondAttribute="bottom" constant="9" id="Lwl-4P-dPI"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TEF-nQ-ZUC" secondAttribute="trailing" constant="15" id="cdx-qq-avV"/>
-                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="top" secondItem="BBz-z3-nMK" secondAttribute="top" constant="10" id="j0n-69-2Db"/>
+                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="leading" secondItem="XyS-34-hDs" secondAttribute="trailing" constant="8" symbolic="YES" id="Hx2-C6-qEv"/>
+                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="centerY" secondItem="BBz-z3-nMK" secondAttribute="centerY" id="P3g-IW-SYi"/>
+                                        <constraint firstItem="TEF-nQ-ZUC" firstAttribute="leading" secondItem="XyS-34-hDs" secondAttribute="trailing" constant="8" symbolic="YES" id="WeH-lW-N73"/>
+                                        <constraint firstAttribute="trailing" secondItem="TEF-nQ-ZUC" secondAttribute="trailing" constant="20" symbolic="YES" id="Xxd-E9-l7E"/>
+                                        <constraint firstItem="XyS-34-hDs" firstAttribute="top" secondItem="BBz-z3-nMK" secondAttribute="top" id="YJh-AC-4F8"/>
+                                        <constraint firstAttribute="bottom" secondItem="XyS-34-hDs" secondAttribute="bottom" id="b3L-hm-Ujw"/>
+                                        <constraint firstItem="XyS-34-hDs" firstAttribute="leading" secondItem="BBz-z3-nMK" secondAttribute="leading" constant="20" symbolic="YES" id="t45-36-yHd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -276,7 +287,7 @@
         <segue reference="cPK-DO-Bni"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="train_icon" width="60.5" height="75"/>
+        <image name="train_icon" width="52" height="64.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

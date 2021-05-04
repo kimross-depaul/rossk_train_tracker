@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "train72.png",
+      "filename" : "CTATrain-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "train72-1.png",
+      "filename" : "CTATrain.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
