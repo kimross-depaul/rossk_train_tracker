@@ -16,33 +16,34 @@ class DetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //We want to refresh this view every 10 seconds
         timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(refreshTimes), userInfo: nil, repeats: true);
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        //Fire the timer when the screen appears
         if let t = timer {
             t.fire();
         }
     }
     @objc func refreshTimes() {
-        print ("Refreshing...");
         Connect.loadData(parms: ["mapid":selectedStop.stopId], objType: .Arrival, sender: self, completion: { result in
             switch result {
             case .success(let ary):
                 print(ary);
             case .failure(let error):
-                print(error);
+                Connect.logError("No trains were returned. \(error.localizedDescription)");
             }
         });
     }
     override func viewWillDisappear(_ animated: Bool) {
+        //Invalidate the timer when this scren disappears
         if let t = timer {
             t.invalidate();
         }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1;
     }
 
@@ -56,11 +57,13 @@ class DetailViewController: UITableViewController {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute]
         
+        //When data is loaded fully, refres this table
         if isDataLoaded {
             if let sCell = cell as? ArrivalViewCell {
                 let whichArrival = arrivals[indexPath.row];
-                sCell.lblDetails.text = "\(whichArrival.stopName) #\(whichArrival.routeNum)"; //"\(line) Line #\(whichArrival.routeNum)";
+                sCell.lblDetails.text = "\(whichArrival.stopName) #\(whichArrival.routeNum)";
                 sCell.lblMain.text = "\(whichArrival.svcToward)";
+                //Calculate how many minutes away the trains are
                 if let thisOnesTime = whichArrival.timePrediction {
                     var minutesLeft = formatter.string(from: now, to: thisOnesTime)! + " Min.";
                     if minutesLeft == "0 Min." {

@@ -7,6 +7,7 @@
 
 import Foundation
 
+//A TrainStop represents a place where the train accepts passengers, a train station, like "Belmont".
 class TrainStop: CTAObject {
     var name: String;
     var isHandicapAssessible: Int;
@@ -17,6 +18,7 @@ class TrainStop: CTAObject {
         self.isHandicapAssessible = isHandicapAccessible;
         self.stopId = stopId;
     }
+    //If we don't receive any data, fill an empty TrainStop with a nice message
     init () {
         name = "Data is currently unavailable";
         isHandicapAssessible = 0;

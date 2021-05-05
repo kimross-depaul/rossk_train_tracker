@@ -18,12 +18,13 @@ class Arrival: CTAObject {
         self.stopName = stopName;
         self.svcToward = svcToward;
         
-        //let timePrediction = "2021-05-03T19:04:44"
+        //Time predictions look like this: "2021-05-01T19:04:44"
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX");
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let myDate:Date = dateFormatter.date(from: timePrediction)!;
-        self.timePrediction = myDate;
+        if let myDate:Date = dateFormatter.date(from: timePrediction) {
+            self.timePrediction = myDate;
+        }
     }
     
 }

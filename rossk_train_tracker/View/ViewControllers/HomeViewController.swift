@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class HomeViewController: UIViewController {
 
     @IBOutlet var btnRed: UIButton!
@@ -24,6 +22,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Styling the button icons
         btnRed.styleMe();
         btnOrange.styleMe();
         btnGreen.styleMe();
@@ -34,27 +33,26 @@ class HomeViewController: UIViewController {
         btnPink.styleMe();
     }
     override func viewWillAppear(_ animated: Bool) {
+        //Hide the nav bar from root controller
         self.navigationController?.setNavigationBarHidden(true, animated: true);
     }
     override func viewWillDisappear(_ animated: Bool) {
+        //Show the nav bar before navigating to other controllers
         self.navigationController?.setNavigationBarHidden(false, animated: true);
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Get the train-line from the icon the user clicked
         line = segue.identifier ?? "";
     }
 
 }
 extension UIButton {
 
+    //Sets rounded corners on the icons, moves text label under the icon
     func styleMe(padding: CGFloat = 0.0) {
         self.setTitleColor(UIColor.black, for: UIControl.State.normal);
-        let imageSize = self.imageView!.image!.size; //self.imageView!.frame.size
+        let imageSize = self.imageView!.image!.size;
         let titleSize = self.titleLabel!.frame.size
-   /*     let test = self.bounds.height;
-        let test2 = self.frame.height;
-        let test3 = self.imageView!.frame.width;
-        let rect = self.imageView!.frame;
-        let rect2 = self.imageView!.bounds;*/
         let totalHeight = imageSize.height + titleSize.height + padding + 20.0
         
         self.layer.cornerRadius = 15.0;

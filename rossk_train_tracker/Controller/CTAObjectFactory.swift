@@ -7,10 +7,8 @@
 
 import Foundation
 
-protocol CTAObject {
+protocol CTAObject {}
     
-}
-
 enum CTAObjectType {
     case Train
     case Arrival
@@ -18,56 +16,52 @@ enum CTAObjectType {
 }
 
 class CTAObjectFactory {
+    //CTA Objects that return Dictionaries are Arrivals and TrainStops
     static func createCTAObject(jDict: jDict, objType: CTAObjectType) -> [CTAObject] {
         switch objType {
         case .Arrival:
             let dataResult = createArrivals(root: jDict);
             switch dataResult {
             case .failure(let error):
+                Connect.logError("Error getting Arrival data: \(error.localizedDescription)")
                 return [Arrival]();
             case .success(let ary):
                 return ary;
             }
         case .TrainStop:
-            //If you wanted a list of train stops, those go on the StopTableViewController
             let dataResult = createTrainStops(root: jDict);
             switch dataResult {
             case .failure(let error) :
-                print("ERROR!!! \(error)")
+                Connect.logError("ERROR!!! \(error)")
                 return [TrainStop]();
             case .success(let ary) :
                 return ary;
             }
         case .Train:
-            print ("Invalid choice - COME BACK");
+            Connect.logError("Not implemented - Trains return arrays, not dictionaries");
         }
         return [CTAObject]();
     }
+    //The only CTAObject that returns an array is a Train object
     static func createCTAObject(jAry: jArray, objType: CTAObjectType) -> [CTAObject] {
-        switch objType {
-        case .Train:
-            let dataResult = createTrains(root: jAry);
-            switch dataResult {
-            case .failure(let error):
-                print ("ERROR! \(error)")
-                return [Train]();
-            case .success(let newTrains):
-                return newTrains;
-            }
-        case .Arrival:
-            print ("invalid choice - COME BACK");
-        case .TrainStop:
-            print("invalid choice - COME BACK");
+        let dataResult = createTrains(root: jAry);
+        switch dataResult {
+        case .failure(let error):
+            Connect.logError("ERROR! \(error)")
+            return [Train]();
+        case .success(let newTrains):
+            return newTrains;
         }
-        return [Train]();
     }
     
     //Lines from City of Chicago:  red, blue, g, brn, p, y, pnk, o
     //Lines from Chicago Transit:  red, blue, g, brn, p, y, pink, org
     
+    //Returns the correct URL for a given CTAObject type
     static func createCTAUrl(parms: [String:String], objType: CTAObjectType) -> String {
         switch objType {
         case .Train:
+            //This translation is required because the codes between CTA and the City don't match
             let selectedLine = parms["rt"]?.lowercased() ?? "";
             var translatedLine = "";
             switch selectedLine {
@@ -87,39 +81,40 @@ class CTAObjectFactory {
         }
     }
     
+    //Creates TrainStop CTAObjects from a json dictionary
     static func createTrainStops(root: jDict) -> Result<[TrainStop],SerializationError> {
         var trainStopResults = [TrainStop]();
         guard let entries = root["route"] as? jArray else {
-            return .failure(SerializationError.missingElement("There should be an 'route' node beneath the root"));
+            return .failure(SerializationError.missingElement("There should be a 'route' node!"));
         }
         
         for e in entries {
             if let entry = e as? jDict {
-                //@name is an attribute of Route - returns a String
-                guard let nodeName = entry["@name"] as? String else {
-                    return .failure(SerializationError.missingElement("rn (route number) is missing"));
-                }
                 //trains are an array of train attributes (route 422, about to stop at station 40380... etc.)
                 guard let trains = entry["train"] as? jArray else {
-                    return .failure(SerializationError.missingElement("rn (route number) is missing"));
+                    return .failure(SerializationError.missingElement("The Train element is missing"));
                 }
+                //Get each station name, handicap status, and stop ID from the results.
+                //These are appended to the array we return
                 for t in trains {
                     if let thisTrain = t as? [String:Any] {
-                        print (thisTrain);
-                        let newStop = TrainStop(name: thisTrain["nextStaNm"] as! String, isHandicapAccessible: 1, stopId: "1");
+                        let nextName = thisTrain["nextStaNm"] as? String ?? "Unavailable";
+                        let newStop = TrainStop(name: nextName, isHandicapAccessible: 1, stopId: "1");
                         trainStopResults.append(newStop);
                     }
                 }
-                print (nodeName);
             }
         }
         return .success(trainStopResults);
     }
+    //Creates Train CTAObjects from the json result
     static func createTrains(root: jArray) -> Result<[Train],SerializationError> {
-        //WE NEED SOME ERROR TRAPPING HERE I THINK
-        var retTrains = [Train](); //There's only one train.  it's an array with one train in it for consistency
+        //There is 1 Train object with many TrainStops.
+        var retTrains = [Train]();
         var append = true;
         
+        //If part of the result is missing, return the data we did get
+        //Create a Train, then TrainStops (added to our Train object)
         for trainNode in root {
             if let node = trainNode as? jDict {
                 let stopName = node["station_name"] as? String ?? "";
@@ -137,8 +132,11 @@ class CTAObjectFactory {
         }
         return .success(retTrains);
     }
+    //Creates an Arrival CTAObject from the json result
     static func createArrivals(root: jDict) -> Result<[Arrival],SerializationError>{
         var retArrivals = [Arrival]();
+        
+        //If data is missing, return as much data as they send.
         if let etas = root["eta"] as? jArray {
             for eta in etas {
                 if let eta = eta as? jDict {

@@ -6,13 +6,9 @@
 //
 /*
  ToDo:
- Labels on detail view need clean-up.  Maybe remove "blue line #016"
- Navigation Controller - change VCs to full-screen
- View Constraints
  look for all "come back's"
  make sure everything is completely error checked
  Turn off wifi and make sure the app handles appropriately
- handicap logo?
  */
 
 import UIKit

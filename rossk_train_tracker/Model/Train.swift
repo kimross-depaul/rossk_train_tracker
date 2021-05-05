@@ -5,33 +5,19 @@
 //  Created by Kim Ross on 4/29/21.
 //
 
-/*
- 
- A Train has
-    - Directions (N, S, E, and W)
-    - Stops for that direction ("Austin", "Belmont", etc.)
- So it looks something like this:
-    Direction:  S
-        Harlem
-        Clark/Lake
- 
-    Direction: N
-        Harlem
-        Belmont
-        Clark/Lake
- */
 
 import Foundation
+
+//A "Train" object represents a train *line*, like "the blue line"
+//It has a collection of of stops that it makes
 
 class Train : CTAObject {
     var line: String;
     var trainStops: Dictionary<String, TrainStop>?  // Stop Name + Stop Details
     var indexes = Dictionary<Int, String>();
-//    var directions: Dictionary<String, Dictionary<Int, TrainStop>>;
     
     init (line: String, stopName: String, isAda: Int, direction: String, stopId: String) {
         self.line = line;
-        //directions = [String: [TrainStop]]();
         trainStops = Dictionary<String, TrainStop>();
         indexes = Dictionary<Int, String>();
         
@@ -50,11 +36,11 @@ class Train : CTAObject {
     }
     init () {
         self.line = "Stops currently unavailable";
-//        directions = [String: [TrainStop]]();
         trainStops = Dictionary<String, TrainStop>();
         indexes = Dictionary<Int, String>();
     }
 
+    //For UITableviews - gets stops by their index
     func getStop(_ index: Int) -> TrainStop {
         if let requestedIndex = indexes[index] {
             return trainStops?[requestedIndex] ?? TrainStop();
