@@ -9,7 +9,7 @@ import UIKit
 
 var arrivals = [Arrival]();
 
-class DetailViewController: UITableViewController {
+class DetailViewController: UITableViewController, PopupProvider {
     var selectedStop = TrainStop();
     var isDataLoaded = false;
     var timer: Timer?;
@@ -32,7 +32,7 @@ class DetailViewController: UITableViewController {
             case .success(let ary):
                 print(ary);
             case .failure(let error):
-                Connect.logError("No trains were returned. \(error.localizedDescription)");
+                self.popupMessage(title: "Uh Oh!", message: "No trains were returned. \(error.localizedDescription)");
             }
         });
     }
@@ -76,5 +76,10 @@ class DetailViewController: UITableViewController {
             }
         }
         return cell;
+    }
+    func popupMessage (title: String, message: String) {
+        let popup = UIAlertController(title: title, message: message , preferredStyle:  .alert);
+        popup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil));
+        self.present(popup, animated: true, completion: nil);
     }
 }

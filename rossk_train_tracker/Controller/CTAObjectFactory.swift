@@ -23,8 +23,10 @@ class CTAObjectFactory {
             let dataResult = createArrivals(root: jDict);
             switch dataResult {
             case .failure(let error):
-                Connect.logError("Error getting Arrival data: \(error.localizedDescription)")
-                return [Arrival]();
+                print ("Error getting Arrival data: \(error.localizedDescription)")
+                var ret = [Arrival]();
+                ret.append(Arrival(routeNum: "", stopName: "Try again later.", svcToward: "Unable to fetch times - try again", timePrediction: ""))
+                return ret;
             case .success(let ary):
                 return ary;
             }
@@ -32,13 +34,15 @@ class CTAObjectFactory {
             let dataResult = createTrainStops(root: jDict);
             switch dataResult {
             case .failure(let error) :
-                Connect.logError("ERROR!!! \(error)")
-                return [TrainStop]();
+                print("ERROR!!! \(error)")
+                var ret = [TrainStop]();
+                ret.append(TrainStop(name: "Unable to get stops - try again later", isHandicapAccessible: 0, stopId: "0"))
+                return ret;
             case .success(let ary) :
                 return ary;
             }
         case .Train:
-            Connect.logError("Not implemented - Trains return arrays, not dictionaries");
+            print("You used this library incorrectly - Trains return arrays, not dictionaries");
         }
         return [CTAObject]();
     }
@@ -47,8 +51,10 @@ class CTAObjectFactory {
         let dataResult = createTrains(root: jAry);
         switch dataResult {
         case .failure(let error):
-            Connect.logError("ERROR! \(error)")
-            return [Train]();
+            print("ERROR! \(error)")
+            var ret = [Train]();
+            ret.append(Train(line: line, stopName: "Stops not available - try again later", isAda: 0, direction: "", stopId: ""));
+            return ret;
         case .success(let newTrains):
             return newTrains;
         }

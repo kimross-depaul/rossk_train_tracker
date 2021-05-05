@@ -44,6 +44,11 @@ class HomeViewController: UIViewController {
         //Get the train-line from the icon the user clicked
         line = segue.identifier ?? "";
     }
+    func popupMessage (title: String, message: String) {
+        let popup = UIAlertController(title: title, message: message , preferredStyle:  .alert);
+        popup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil));
+        self.present(popup, animated: true, completion: nil);
+    }
 
 }
 extension UIButton {

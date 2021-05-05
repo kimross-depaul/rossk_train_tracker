@@ -11,7 +11,7 @@ var line: String = "";
 var trainStops: [TrainStop]?;
 var trains: [Train]?;
 
-class StopTableViewController: UITableViewController {
+class StopTableViewController: UITableViewController, PopupProvider {
 
     var isDataLoaded = false;
     
@@ -28,7 +28,7 @@ class StopTableViewController: UITableViewController {
             case .success(let ary):
                 print(ary);
             case .failure(let error):
-                Connect.logError("No trains were returned. \(error.localizedDescription)");
+                self.popupMessage(title: "Uh oh!", message: "No trains were returned. \(error.localizedDescription)");
             }
         });
     }
@@ -82,5 +82,10 @@ class StopTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "To_Detail", sender: self)
+    }
+    func popupMessage (title: String, message: String) {
+        let popup = UIAlertController(title: title, message: message , preferredStyle:  .alert);
+        popup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil));
+        self.present(popup, animated: true, completion: nil);
     }
 }

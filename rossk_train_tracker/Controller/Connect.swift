@@ -20,13 +20,12 @@ class Connect {
         config.timeoutIntervalForRequest = TimeInterval(15)
         config.timeoutIntervalForResource = TimeInterval(15)
         let session = URLSession(configuration: config)
-///        let session = URLSession.shared;
         let request = URLRequest(url: url);
         
         session.dataTask(with: request) { data, response, error in
             //Make sure we have no session or data issues
             guard error == nil else {
-                Connect.logError(error?.localizedDescription ?? "Unknown Error");
+                Connect.logError(error?.localizedDescription ?? "Unknown Error", vc: sender);
                 return;
             }
             guard let data = data else {return}
@@ -53,11 +52,11 @@ class Connect {
                     }
                 }
             } catch SerializationError.missingElement(let msg) {
-                Connect.logError("Missing: \(msg)");
+                Connect.logError("Missing: \(msg)", vc: sender);
             } catch SerializationError.invalidResponse(let msg, let data) {
-                Connect.logError("Invalid:  \(msg), \(data)");
+                Connect.logError("Invalid:  \(msg), \(data)", vc: sender);
             } catch let error as NSError {
-                Connect.logError ("Other Error: \(error.localizedDescription)");
+                Connect.logError ("Other Error: \(error.localizedDescription)", vc: sender);
             }
             
             //Refresh the view-controller's data
@@ -73,14 +72,12 @@ class Connect {
             }
         }.resume();
     }
-    static func logError(_ message: String) {
- /*       let actionSheetController: UIAlertController = UIAlertController(title: "Oh no!", message: message, preferredStyle: .actionSheet)
-
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in }
-        actionSheetController.addAction(cancelAction)
-//        actionSheetController.popoverPresentationController?.sourceView = yourSourceViewName // works for both iPhone & iPad
-    */
-        print (message);
+    static func logError(_ message: String, vc: UIViewController){
+        DispatchQueue.main.async {
+            if let currVc = vc as? PopupProvider {
+                currVc.popupMessage(title: "Uh oh!", message: message);
+            }
+        }
     }
     
 
