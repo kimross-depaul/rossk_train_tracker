@@ -39,13 +39,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swell El" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHn-0C-ZLC">
-                                <rect key="frame" x="0.0" y="208" width="414" height="66.5"/>
+                                <rect key="frame" x="0.0" y="208" width="414" height="73"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="57"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-p0-bES">
-                                <rect key="frame" x="47" y="325" width="320" height="333"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-p0-bES">
+                                <rect key="frame" x="47" y="623" width="320" height="318"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-zU-3rl">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
@@ -69,7 +69,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="smc-eg-fnz">
-                                        <rect key="frame" x="0.0" y="89.5" width="320" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="84.5" width="320" height="64.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-Lk-Otb">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
@@ -90,7 +90,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pt8-TE-65b">
-                                        <rect key="frame" x="0.0" y="179" width="320" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="169" width="320" height="64.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-d9-lCE">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
@@ -111,7 +111,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dAY-Ti-8bE">
-                                        <rect key="frame" x="0.0" y="268.5" width="320" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="253.5" width="320" height="64.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plN-0I-XmB">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
@@ -133,20 +133,25 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LTc-Ex-Mbe">
+                                <rect key="frame" x="0.0" y="281" width="414" height="334"/>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sIP-ry-Qf7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7VG-p0-bES" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sIP-ry-Qf7" secondAttribute="leading" constant="20" id="2Lo-X6-LH1"/>
                             <constraint firstItem="VHn-0C-ZLC" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="48L-JX-ae2"/>
-                            <constraint firstItem="7VG-p0-bES" firstAttribute="top" secondItem="VHn-0C-ZLC" secondAttribute="bottom" constant="50.5" id="48u-ym-ud9"/>
+                            <constraint firstItem="sIP-ry-Qf7" firstAttribute="bottom" secondItem="LTc-Ex-Mbe" secondAttribute="bottom" constant="247" id="8or-gb-mzC"/>
+                            <constraint firstItem="LTc-Ex-Mbe" firstAttribute="centerY" secondItem="0u8-Il-15p" secondAttribute="centerY" id="A7R-PN-HWO"/>
                             <constraint firstItem="VHn-0C-ZLC" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="Hi1-Rl-GwF"/>
                             <constraint firstItem="LJS-X8-ptw" firstAttribute="top" secondItem="0u8-Il-15p" secondAttribute="top" constant="30" id="IYB-CH-yyG"/>
-                            <constraint firstItem="7VG-p0-bES" firstAttribute="centerX" secondItem="0u8-Il-15p" secondAttribute="centerX" id="KlJ-Rr-6Yn"/>
+                            <constraint firstItem="7VG-p0-bES" firstAttribute="centerX" secondItem="VHn-0C-ZLC" secondAttribute="centerX" id="RjH-v0-I9X"/>
                             <constraint firstItem="LJS-X8-ptw" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="WBq-4r-7q7"/>
+                            <constraint firstItem="LTc-Ex-Mbe" firstAttribute="top" secondItem="VHn-0C-ZLC" secondAttribute="bottom" id="XmZ-Ay-mg7"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="7VG-p0-bES" secondAttribute="bottom" constant="-79" id="lpD-zB-wFd"/>
+                            <constraint firstItem="LTc-Ex-Mbe" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="oD9-TS-OBx"/>
+                            <constraint firstItem="LTc-Ex-Mbe" firstAttribute="centerX" secondItem="0u8-Il-15p" secondAttribute="centerX" id="pw6-ts-zWU"/>
                             <constraint firstItem="VHn-0C-ZLC" firstAttribute="top" secondItem="LJS-X8-ptw" secondAttribute="bottom" constant="8" symbolic="YES" id="qe7-mx-OVN"/>
-                            <constraint firstItem="sIP-ry-Qf7" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7VG-p0-bES" secondAttribute="bottom" priority="250" constant="50" id="sBO-Sp-nLD"/>
-                            <constraint firstItem="sIP-ry-Qf7" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7VG-p0-bES" secondAttribute="trailing" constant="20" id="w2Q-UL-N5x"/>
                             <constraint firstItem="LJS-X8-ptw" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="xyK-JN-etN"/>
                         </constraints>
                     </view>
@@ -160,6 +165,7 @@
                         <outlet property="btnPurple" destination="plN-0I-XmB" id="5OW-X2-UA0"/>
                         <outlet property="btnRed" destination="5un-ed-r0g" id="5Cg-4X-j7t"/>
                         <outlet property="btnYellow" destination="BL2-if-dWg" id="LFc-Pj-2Xu"/>
+                        <outlet property="map" destination="LTc-Ex-Mbe" id="Th1-Zm-WaD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKl-91-TuD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

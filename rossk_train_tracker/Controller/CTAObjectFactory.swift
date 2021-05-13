@@ -36,7 +36,7 @@ class CTAObjectFactory {
             case .failure(let error) :
                 print("ERROR!!! \(error)")
                 var ret = [TrainStop]();
-                ret.append(TrainStop(name: "Unable to get stops - try again later", isHandicapAccessible: 0, stopId: "0"))
+                ret.append(TrainStop(name: "Unable to get stops - try again later", isHandicapAccessible: 0, stopId: "0", lat: 0.0, long: 0.0))
                 return ret;
             case .success(let ary) :
                 return ary;
@@ -53,7 +53,7 @@ class CTAObjectFactory {
         case .failure(let error):
             print("ERROR! \(error)")
             var ret = [Train]();
-            ret.append(Train(line: line, stopName: "Stops not available - try again later", isAda: 0, direction: "", stopId: ""));
+            ret.append(Train(line: line, stopName: "Stops not available - try again later", isAda: 0, direction: "", stopId: "", lat: 0.0, long: 0.0));
             return ret;
         case .success(let newTrains):
             return newTrains;
@@ -67,6 +67,10 @@ class CTAObjectFactory {
     static func createCTAUrl(parms: [String:String], objType: CTAObjectType) -> String {
         switch objType {
         case .Train:
+            //The opening screen gets all trains
+            if parms["rt"] == "" {
+                return "https://data.cityofchicago.org/resource/8pix-ypme.json"
+            }
             //This translation is required because the codes between CTA and the City don't match
             let selectedLine = parms["rt"]?.lowercased() ?? "";
             var translatedLine = "";
@@ -104,8 +108,9 @@ class CTAObjectFactory {
                 //These are appended to the array we return
                 for t in trains {
                     if let thisTrain = t as? [String:Any] {
+                        
                         let nextName = thisTrain["nextStaNm"] as? String ?? "Unavailable";
-                        let newStop = TrainStop(name: nextName, isHandicapAccessible: 1, stopId: "1");
+                        let newStop = TrainStop(name: nextName, isHandicapAccessible: 1, stopId: "1", lat: 0.0, long: 0.0);
                         trainStopResults.append(newStop);
                     }
                 }
@@ -127,16 +132,34 @@ class CTAObjectFactory {
                 let isAda = node["ada"] as? Int ?? 0;
                 let dirId = node["direction_id"] as? String ?? "";
                 let stopId = node["map_id"] as? String ?? "";
+                let lat_long = getLatLong(node["location"]);
+                
                 if append {
-                    let newTrain = Train(line: line, stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId);
+                    let newTrain = Train(line: line, stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: lat_long.0, long: lat_long.1);
                     retTrains.append(newTrain);
                     append = false;
                 }else {
-                    retTrains[0].addStop(stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId)
+                    retTrains[0].addStop(stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: 0.0, long: 0.0)
                 }
             }
         }
         return .success(retTrains);
+    }
+    static func getLatLong(_ location: Any?) -> (Double, Double) {
+        var lat: Double = 0.0;
+        var long: Double = 0.0;
+        if let locAry = location as? jDict {
+            let locLat = locAry["latitude"] ?? "0";
+            let locLong = locAry["longitude"] ?? "0";
+            
+            if let strLat = locLat as? String {
+                lat = NumberFormatter().number(from: strLat)?.doubleValue ?? 0.0;
+            }
+            if let strLong = locLong as? String {
+                long = NumberFormatter().number(from: strLong)?.doubleValue ?? 0.0;
+            }
+        }
+        return (lat, long);
     }
     //Creates an Arrival CTAObject from the json result
     static func createArrivals(root: jDict) -> Result<[Arrival],SerializationError>{

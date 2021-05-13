@@ -16,16 +16,16 @@ class Train : CTAObject {
     var trainStops: Dictionary<String, TrainStop>?  // Stop Name + Stop Details
     var indexes = Dictionary<Int, String>();
     
-    init (line: String, stopName: String, isAda: Int, direction: String, stopId: String) {
+    init (line: String, stopName: String, isAda: Int, direction: String, stopId: String, lat: Double, long: Double) {
         self.line = line;
         trainStops = Dictionary<String, TrainStop>();
         indexes = Dictionary<Int, String>();
         
-        addStop(stopName: stopName, isAda: isAda, direction: direction, stopId: stopId);
+        addStop(stopName: stopName, isAda: isAda, direction: direction, stopId: stopId, lat: lat, long: long);
     }
     
-    func addStop(stopName: String, isAda: Int, direction: String, stopId: String) {
-        let t = TrainStop(name: stopName, isHandicapAccessible: isAda, stopId: stopId);
+    func addStop(stopName: String, isAda: Int, direction: String, stopId: String, lat: Double, long: Double) {
+        let t = TrainStop(name: stopName, isHandicapAccessible: isAda, stopId: stopId, lat: lat, long: long);
 
         let exists = trainStops?[stopName] != nil
         

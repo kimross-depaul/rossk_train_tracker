@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		388299192642349B004CDC10 /* PopupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388299182642349B004CDC10 /* PopupProtocol.swift */; };
+		3882992B264CAF74004CDC10 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882992A264CAF74004CDC10 /* Marker.swift */; };
 		38848511263E3EDC00211E2C /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38848510263E3EDC00211E2C /* SerializationError.swift */; };
 		388DB25B2640D04D0032A33B /* LineCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388DB25A2640D04D0032A33B /* LineCircle.swift */; };
 		38CBC3C12639E7750008D63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3C02639E7750008D63A /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		388299182642349B004CDC10 /* PopupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupProtocol.swift; sourceTree = "<group>"; };
+		3882992A264CAF74004CDC10 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		38848510263E3EDC00211E2C /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
 		388DB25A2640D04D0032A33B /* LineCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineCircle.swift; sourceTree = "<group>"; };
 		38CBC3BD2639E7750008D63A /* rossk_train_tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rossk_train_tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 				38CBC420263BA15C0008D63A /* Train.swift */,
 				38CBC425263BA1800008D63A /* Arrival.swift */,
 				38CBC42A263BA1950008D63A /* TrainStop.swift */,
+				3882992A264CAF74004CDC10 /* Marker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */,
 				38CBC421263BA15C0008D63A /* Train.swift in Sources */,
 				38CBC433263D9DDE0008D63A /* CTAObjectFactory.swift in Sources */,
+				3882992B264CAF74004CDC10 /* Marker.swift in Sources */,
 				38CBC3C32639E7750008D63A /* SceneDelegate.swift in Sources */,
 				38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */,
 				38D27B95263F897500EFB8AF /* ArrivalViewCell.swift in Sources */,

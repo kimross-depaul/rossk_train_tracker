@@ -17,8 +17,8 @@ class Connect {
         guard let url = URL(string: urlString) else { return }
         
         let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest = TimeInterval(15)
-        config.timeoutIntervalForResource = TimeInterval(15)
+        config.timeoutIntervalForRequest = TimeInterval(25)
+        config.timeoutIntervalForResource = TimeInterval(25)
         let session = URLSession(configuration: config)
         let request = URLRequest(url: url);
         
@@ -61,6 +61,10 @@ class Connect {
             
             //Refresh the view-controller's data
             DispatchQueue.main.async {
+                if let homeSender = sender as? HomeViewController {
+                    homeSender.isDataLoaded = true;
+                    homeSender.putAnnotations();
+                }
                 if let stopSender = sender as? StopTableViewController {
                     stopSender.isDataLoaded = true;
                     stopSender.tableView.reloadData();
