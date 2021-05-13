@@ -110,7 +110,8 @@ class CTAObjectFactory {
                     if let thisTrain = t as? [String:Any] {
                         
                         let nextName = thisTrain["nextStaNm"] as? String ?? "Unavailable";
-                        let newStop = TrainStop(name: nextName, isHandicapAccessible: 1, stopId: "1", lat: 0.0, long: 0.0);
+//                        let lat_long = thisTrain["location"]
+                        let newStop = TrainStop(name: nextName, isHandicapAccessible: 1, stopId: "1", lat: 2.0, long: 3.0);
                         trainStopResults.append(newStop);
                     }
                 }
@@ -139,7 +140,7 @@ class CTAObjectFactory {
                     retTrains.append(newTrain);
                     append = false;
                 }else {
-                    retTrains[0].addStop(stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: 0.0, long: 0.0)
+                    retTrains[0].addStop(stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: lat_long.0, long: lat_long.1)
                 }
             }
         }

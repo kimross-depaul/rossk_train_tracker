@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class HomeViewController: UIViewController, CLLocationManagerDelegate {
+class HomeViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet var btnRed: UIButton!
     @IBOutlet var btnOrange: UIButton!
@@ -50,6 +50,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         guard let myLoc: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
         let regionView = MKCoordinateRegion(center: myLoc, latitudinalMeters: 500, longitudinalMeters: 500);
         map.setRegion(regionView, animated: false);
+        map.delegate = self;
                 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -75,9 +76,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     func putAnnotations() {
         if self.isDataLoaded {
+//            map.removeAnnotations(map.annotations);
             if let trains = trains {
                 for t in trains {
                     if let stops = t.trainStops {
+                        print (stops.count);
                         for stop in stops {
                             let mark = stop.value.getMarker();
                             if isCoordNearby(coord: mark.coordinate) {
@@ -90,9 +93,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     func isCoordNearby(coord: CLLocationCoordinate2D) -> Bool {
-        let visibleMapRect = map.visibleMapRect;
+        let visibleMapRect:MKMapRect = map.visibleMapRect;
         let point = MKMapPoint(coord);
-        
         return visibleMapRect.contains(point);
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,7 +116,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         let regionView = MKCoordinateRegion(center: myLoc, latitudinalMeters: 500, longitudinalMeters: 500);
         map.setRegion(regionView, animated: false);
     }
-    
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+     //   map.removeAnnotations(map.annotations);
+    }
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        putAnnotations();
+    }
 }
 
 extension UIButton {
