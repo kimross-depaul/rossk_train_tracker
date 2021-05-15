@@ -11,6 +11,7 @@ class StopTableCell: UITableViewCell {
 
     @IBOutlet var lblStopName: UILabel!
     @IBOutlet var barCircle: LineCircle!
+    @IBOutlet var lblSubtitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

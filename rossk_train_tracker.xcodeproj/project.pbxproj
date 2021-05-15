@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3881886226501B81000F1549 /* StopColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881886126501B81000F1549 /* StopColors.swift */; };
 		388299192642349B004CDC10 /* PopupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388299182642349B004CDC10 /* PopupProtocol.swift */; };
 		3882992B264CAF74004CDC10 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882992A264CAF74004CDC10 /* Marker.swift */; };
 		38848511263E3EDC00211E2C /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38848510263E3EDC00211E2C /* SerializationError.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3881886126501B81000F1549 /* StopColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopColors.swift; sourceTree = "<group>"; };
 		388299182642349B004CDC10 /* PopupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupProtocol.swift; sourceTree = "<group>"; };
 		3882992A264CAF74004CDC10 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		38848510263E3EDC00211E2C /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				38CBC437263DABB10008D63A /* StopTableCell.swift */,
 				38D27B94263F897500EFB8AF /* ArrivalViewCell.swift */,
 				388DB25A2640D04D0032A33B /* LineCircle.swift */,
+				3881886126501B81000F1549 /* StopColors.swift */,
 				388299182642349B004CDC10 /* PopupProtocol.swift */,
 			);
 			path = ViewControllers;
@@ -346,6 +349,7 @@
 				38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */,
 				38CBC421263BA15C0008D63A /* Train.swift in Sources */,
 				38CBC433263D9DDE0008D63A /* CTAObjectFactory.swift in Sources */,
+				3881886226501B81000F1549 /* StopColors.swift in Sources */,
 				3882992B264CAF74004CDC10 /* Marker.swift in Sources */,
 				38CBC3C32639E7750008D63A /* SceneDelegate.swift in Sources */,
 				38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */,

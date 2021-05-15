@@ -63,6 +63,7 @@ class Connect {
             DispatchQueue.main.async {
                 if let homeSender = sender as? HomeViewController {
                     homeSender.isDataLoaded = true;
+                    homeSender.tableView.reloadData();
                     homeSender.putAnnotations();
                 }
                 if let stopSender = sender as? StopTableViewController {
