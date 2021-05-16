@@ -34,7 +34,7 @@ class CTAObjectFactory {
             case .Arrival:
                 arrivals = CTAObjectFactory.createCTAObject(jDict: root, objType: .Arrival) as? [Arrival] ?? [Arrival]();
             case .TrainStop:
-                trainStops = CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop]
+                trainStops = (CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop])!
             case .Train:
                 print ("Invalid argument");
             }

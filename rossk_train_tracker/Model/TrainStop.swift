@@ -37,13 +37,16 @@ class TrainStop: CTAObject {
         distanceToMe = -1;
         strColors = [String]();
     }
+    // A "Color" refers to an El line (Pink Line, Blue line, etc.)
     func addColor(_ strColor: String) {
         strColors.append(strColor);
     }
+    //Produces an MKAnnotation subclass with this class' cooredinates
     func getMarker() -> Marker {
         let coord = CLLocationCoordinate2D(latitude: CLLocationDegrees(self.latitude), longitude: CLLocationDegrees(self.longitude));
         return Marker(coord, title: name, mapId: stopId);
     }
+    //Given the users' current location, tells how far this point is from them
     func setDistanceToMe(yourCoord: CLLocationCoordinate2D?) {
         if let yourCoord = yourCoord {
             let thisCoord = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude);
@@ -55,11 +58,13 @@ class TrainStop: CTAObject {
             distanceToMe = -1;
         }
     }
+    //Convers from meters to feet / miles, displays a nice message
     func getDistance() -> String {
-        if distanceToMe >= 1000 {
-            return String(format: "%.0f", distanceToMe/500) + " Kilometer(s) from me"
-        }else {
-            return String(format: "%.0f", distanceToMe) + " Meter(s) from me";
+        let feet = distanceToMe * 3.28084;
+        if feet >= 250 {
+            return String(format: "%.2f Miles from me", feet/3280.84)
+        } else {
+            return String(format: "%.0f Feet away", feet);
         }
     }
 }

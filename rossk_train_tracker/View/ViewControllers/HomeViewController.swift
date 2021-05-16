@@ -9,6 +9,10 @@ import UIKit
 import CoreLocation
 import MapKit
 
+var arrivals = [Arrival]();
+var trains = [Train]();
+var trainStops = [TrainStop]();
+
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MKMapViewDelegate, PopupProvider, Refreshable {
 
     @IBOutlet var btnRed: UIButton!
@@ -26,42 +30,47 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isDataLoaded = false;
     var visibleStops: [TrainStop] = [TrainStop]();
     var tappedPinId: Int?
+    var hasLocationPermission = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self;
         tableView.dataSource = self;
         
-        //Styling the button icons
+        //Request Permission for your location (when the app is in use)
+        locationManager.requestWhenInUseAuthorization()
 
-        
-        let status = CLLocationManager.authorizationStatus();
-        if status == .denied || status == .restricted {
-            print ("Location Service not authorized");
-        } else {
+        //Get the user's permission to use their location
+        switch locationManager.authorizationStatus {
+        case .restricted, .denied, .notDetermined:
+            popupMessage(title: "Location Services", message: "Unable to determine your current location - allow 'Location Services' permissions in Settings to enable that feature.");
+        default:
+            hasLocationPermission = true;
             locationManager.desiredAccuracy = kCLLocationAccuracyBest;
             locationManager.distanceFilter = 1 //meter
             locationManager.delegate = self;
-            locationManager.requestWhenInUseAuthorization()
         }
-        guard let myLoc: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
-        let regionView = MKCoordinateRegion(center: myLoc, latitudinalMeters: 500, longitudinalMeters: 500);
-        map.setRegion(regionView, animated: false);
         map.delegate = self;
-                
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        //Hide the nav bar from root controller
-        self.navigationController?.setNavigationBarHidden(true, animated: true);
-        map.showsUserLocation = true;
         map.isZoomEnabled = true;
         map.isScrollEnabled = true;
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        //COME BACK - SHOULD EXECUTE WHEN THE PERSON MOVES, not just when view appears
+        if (hasLocationPermission) {
+            guard let myLoc: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+            let regionView = MKCoordinateRegion(center: myLoc, latitudinalMeters: 500, longitudinalMeters: 500);
+            map.setRegion(regionView, animated: false);
+            map.showsUserLocation = true;
+        }
         
-        trains = [Train]();
+        //Hide the nav bar from root controller
+        self.navigationController?.setNavigationBarHidden(true, animated: true);
+
         //Retrieve trains from the API
+        trains = [Train]();
         Connect.loadData(parms: ["rt":""], objType: .Train, sender: self, completion: { result in
             switch result {
-            case .success(let ary):
+            case .success( _):
                 putAnnotations();
             case .failure(let error):
                 self.popupMessage(title: "Uh oh!", message: "No trains were returned. \(error.localizedDescription)");
@@ -71,13 +80,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func putAnnotations() {
         if self.isDataLoaded {
-//            map.removeAnnotations(map.annotations);
             visibleStops = [TrainStop]();
             tappedPinId = -1;
-            if let trains = trains {
+            //if let trains = trains {
                 for t in trains {
                     if let stops = t.trainStops {
-                        print (stops.count);
                         var i = 0;
                         for stop in stops {
                             let mark = stop.value.getMarker();
@@ -90,7 +97,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                     }
                 }
-            }
+          //  }
             visibleStops.sort {$0.distanceToMe < $1.distanceToMe} ;
             tableView.reloadData();
         }
@@ -118,7 +125,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         if let detailViewController = segue.destination as? DetailViewController {
             if selectedStop >= 0 {
-                detailViewController.selectedStop = visibleStops[selectedStop];// trains?[0].getStop(indexPath.row) ?? TrainStop();
+                detailViewController.selectedStop = visibleStops[selectedStop];
             }
         }
     }
@@ -139,8 +146,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
      //   map.removeAnnotations(map.annotations);
-    }
-    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         putAnnotations();
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -154,6 +159,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         view.isEnabled = true;
         view.canShowCallout = true;
+        view.pinTintColor = #colorLiteral(red: 0.2948878094, green: 0.2563245438, blue: 0.5212025808, alpha: 1);
         let btn = UIButton(type: .detailDisclosure);
         
         view.leftCalloutAccessoryView = btn;
@@ -185,7 +191,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //Only update the table if data was successfully retrieve from the API
         if isDataLoaded {
-            guard let _ = trains?[0] else {
+            if trains.count == 0 {
                 return cell;
             }
             if let sCell = cell as? StopTableCell {
@@ -195,7 +201,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     sCell.lblStopName.text = whichStop.name + " ♿️"
                 }
                 sCell.lblSubtitle.text = whichStop.getDistance();
-                sCell.barCircle.setColor(strColor: line);
+                sCell.barCircle.setColor(strColor: "");
                 for c in whichStop.strColors {
                     sCell.colors.addColor(strColor: c);
                 }

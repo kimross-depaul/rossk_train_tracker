@@ -160,26 +160,6 @@
             </objects>
             <point key="canvasLocation" x="-1072.463768115942" y="-184.15178571428569"/>
         </scene>
-        <!--Stop Table View Controller-->
-        <scene sceneID="i8m-wG-KKh">
-            <objects>
-                <tableViewController id="cDV-iX-QBw" customClass="StopTableViewController" customModule="rossk_train_tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mFZ-tP-bqV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <connections>
-                            <outlet property="dataSource" destination="cDV-iX-QBw" id="JsD-5i-Xt0"/>
-                            <outlet property="delegate" destination="cDV-iX-QBw" id="mUo-qN-8Tw"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="TUo-OA-yw4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hqD-wa-dnF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-262" y="410"/>
-        </scene>
         <!--Detail View Controller-->
         <scene sceneID="Dnm-ke-uVx">
             <objects>

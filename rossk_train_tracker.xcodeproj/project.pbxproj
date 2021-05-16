@@ -22,7 +22,6 @@
 		38CBC3D82639E7790008D63A /* rossk_train_trackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3D72639E7790008D63A /* rossk_train_trackerTests.swift */; };
 		38CBC3E32639E77A0008D63A /* rossk_train_trackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC3E22639E77A0008D63A /* rossk_train_trackerUITests.swift */; };
 		38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC4012639E9110008D63A /* HomeViewController.swift */; };
-		38CBC4072639E9390008D63A /* StopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC4062639E9390008D63A /* StopTableViewController.swift */; };
 		38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC40E2639E9520008D63A /* DetailViewController.swift */; };
 		38CBC419263B9D560008D63A /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC418263B9D560008D63A /* Connect.swift */; };
 		38CBC421263BA15C0008D63A /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBC420263BA15C0008D63A /* Train.swift */; };
@@ -54,6 +53,7 @@
 		3881886126501B81000F1549 /* StopColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopColors.swift; sourceTree = "<group>"; };
 		3881886626502C11000F1549 /* RefreshableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableProtocol.swift; sourceTree = "<group>"; };
 		3881886B265060B1000F1549 /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
+		388188732651D27D000F1549 /* WalkingFromOglvie.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WalkingFromOglvie.gpx; sourceTree = "<group>"; };
 		388299182642349B004CDC10 /* PopupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupProtocol.swift; sourceTree = "<group>"; };
 		3882992A264CAF74004CDC10 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		38848510263E3EDC00211E2C /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
@@ -72,7 +72,6 @@
 		38CBC3E22639E77A0008D63A /* rossk_train_trackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rossk_train_trackerUITests.swift; sourceTree = "<group>"; };
 		38CBC3E42639E77A0008D63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38CBC4012639E9110008D63A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = rossk_train_tracker/View/ViewControllers/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
-		38CBC4062639E9390008D63A /* StopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTableViewController.swift; sourceTree = "<group>"; };
 		38CBC40E2639E9520008D63A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		38CBC418263B9D560008D63A /* Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
 		38CBC420263BA15C0008D63A /* Train.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
@@ -144,6 +143,7 @@
 			children = (
 				38CBC3D72639E7790008D63A /* rossk_train_trackerTests.swift */,
 				38CBC3D92639E77A0008D63A /* Info.plist */,
+				388188732651D27D000F1549 /* WalkingFromOglvie.gpx */,
 			);
 			path = rossk_train_trackerTests;
 			sourceTree = "<group>";
@@ -204,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				38CBC4012639E9110008D63A /* HomeViewController.swift */,
-				38CBC4062639E9390008D63A /* StopTableViewController.swift */,
 				38CBC40E2639E9520008D63A /* DetailViewController.swift */,
 				38CBC437263DABB10008D63A /* StopTableCell.swift */,
 				38D27B94263F897500EFB8AF /* ArrivalViewCell.swift */,
@@ -349,7 +348,6 @@
 				388DB25B2640D04D0032A33B /* LineCircle.swift in Sources */,
 				38CBC438263DABB20008D63A /* StopTableCell.swift in Sources */,
 				38CBC3C12639E7750008D63A /* AppDelegate.swift in Sources */,
-				38CBC4072639E9390008D63A /* StopTableViewController.swift in Sources */,
 				38848511263E3EDC00211E2C /* SerializationError.swift in Sources */,
 				388299192642349B004CDC10 /* PopupProtocol.swift in Sources */,
 				38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */,

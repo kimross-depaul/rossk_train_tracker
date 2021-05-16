@@ -7,8 +7,6 @@
 
 import UIKit
 
-var arrivals = [Arrival]();
-
 class DetailViewController: UITableViewController, PopupProvider, Refreshable {
     var selectedStop = TrainStop();
     var isDataLoaded = false;
