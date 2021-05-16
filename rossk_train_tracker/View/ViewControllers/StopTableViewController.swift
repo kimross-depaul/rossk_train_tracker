@@ -54,12 +54,13 @@ class StopTableViewController: UITableViewController, PopupProvider {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrainStop", for: indexPath)
         
         //Only update the table if data was successfully retrieve from the API
-        if isDataLoaded {
+     /*   if isDataLoaded {
             guard let trainLine = trains?[0] else {
                 return cell;
             }
             if let sCell = cell as? StopTableCell {
-                let whichStop = trainLine.getStop(indexPath.row)
+                //TODO - GET RID OF STOPVIEWCONTROLLER IF WE'RE NOT USING IT
+                //let whichStop = trainLine.getStop(indexPath.row)
                 sCell.lblStopName.text = whichStop.name;
                 if whichStop.isHandicapAssessible == 1 {
                     sCell.lblStopName.text = whichStop.name + " ♿️"
@@ -68,14 +69,14 @@ class StopTableViewController: UITableViewController, PopupProvider {
                 }
                 sCell.barCircle.setColor(strColor: line);
             }
-        }
+        }*/
         return cell;
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Launch the detail view when the user picks a stop
         if let detailViewController = segue.destination as? DetailViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                detailViewController.selectedStop = trains?[0].getStop(indexPath.row) ?? TrainStop();
+  /////////              detailViewController.selectedStop = trains?[0].getStop(indexPath.row) ?? TrainStop();
             }
         }
     }

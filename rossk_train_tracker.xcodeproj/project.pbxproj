@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3881886226501B81000F1549 /* StopColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881886126501B81000F1549 /* StopColors.swift */; };
+		3881886726502C11000F1549 /* RefreshableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881886626502C11000F1549 /* RefreshableProtocol.swift */; };
+		3881886C265060B1000F1549 /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3881886B265060B1000F1549 /* JsonUtil.swift */; };
 		388299192642349B004CDC10 /* PopupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388299182642349B004CDC10 /* PopupProtocol.swift */; };
 		3882992B264CAF74004CDC10 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882992A264CAF74004CDC10 /* Marker.swift */; };
 		38848511263E3EDC00211E2C /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38848510263E3EDC00211E2C /* SerializationError.swift */; };
@@ -50,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		3881886126501B81000F1549 /* StopColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopColors.swift; sourceTree = "<group>"; };
+		3881886626502C11000F1549 /* RefreshableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableProtocol.swift; sourceTree = "<group>"; };
+		3881886B265060B1000F1549 /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
 		388299182642349B004CDC10 /* PopupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupProtocol.swift; sourceTree = "<group>"; };
 		3882992A264CAF74004CDC10 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		38848510263E3EDC00211E2C /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				38848510263E3EDC00211E2C /* SerializationError.swift */,
 				38CBC432263D9DDE0008D63A /* CTAObjectFactory.swift */,
 				38CBC418263B9D560008D63A /* Connect.swift */,
+				3881886B265060B1000F1549 /* JsonUtil.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				388DB25A2640D04D0032A33B /* LineCircle.swift */,
 				3881886126501B81000F1549 /* StopColors.swift */,
 				388299182642349B004CDC10 /* PopupProtocol.swift */,
+				3881886626502C11000F1549 /* RefreshableProtocol.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -347,11 +353,13 @@
 				38848511263E3EDC00211E2C /* SerializationError.swift in Sources */,
 				388299192642349B004CDC10 /* PopupProtocol.swift in Sources */,
 				38CBC40F2639E9520008D63A /* DetailViewController.swift in Sources */,
+				3881886726502C11000F1549 /* RefreshableProtocol.swift in Sources */,
 				38CBC421263BA15C0008D63A /* Train.swift in Sources */,
 				38CBC433263D9DDE0008D63A /* CTAObjectFactory.swift in Sources */,
 				3881886226501B81000F1549 /* StopColors.swift in Sources */,
 				3882992B264CAF74004CDC10 /* Marker.swift in Sources */,
 				38CBC3C32639E7750008D63A /* SceneDelegate.swift in Sources */,
+				3881886C265060B1000F1549 /* JsonUtil.swift in Sources */,
 				38CBC4022639E9110008D63A /* HomeViewController.swift in Sources */,
 				38D27B95263F897500EFB8AF /* ArrivalViewCell.swift in Sources */,
 				38CBC42B263BA1950008D63A /* TrainStop.swift in Sources */,

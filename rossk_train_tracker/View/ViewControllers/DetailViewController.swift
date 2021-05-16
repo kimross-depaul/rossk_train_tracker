@@ -9,10 +9,11 @@ import UIKit
 
 var arrivals = [Arrival]();
 
-class DetailViewController: UITableViewController, PopupProvider {
+class DetailViewController: UITableViewController, PopupProvider, Refreshable {
     var selectedStop = TrainStop();
     var isDataLoaded = false;
     var timer: Timer?;
+    var svcTowards: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +31,24 @@ class DetailViewController: UITableViewController, PopupProvider {
         Connect.loadData(parms: ["mapid":selectedStop.stopId], objType: .Arrival, sender: self, completion: { result in
             switch result {
             case .success(let ary):
-                print(ary);
+                svcTowards = [String]();
+                for arrival in ary {
+                    print(arrival);
+                }
             case .failure(let error):
                 self.popupMessage(title: "Uh Oh!", message: "No trains were returned. \(error.localizedDescription)");
             }
         });
+    }
+    func refresh() {
+        isDataLoaded = true;
+        svcTowards = [String]();
+        for arrival in arrivals {
+            if !svcTowards!.contains(arrival.svcToward) {
+                svcTowards!.append(arrival.svcToward);
+            }
+        }
+        tableView.reloadData();
     }
     override func viewWillDisappear(_ animated: Bool) {
         //Invalidate the timer when this scren disappears
@@ -44,15 +58,28 @@ class DetailViewController: UITableViewController, PopupProvider {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+        if let svcTowards = svcTowards {
+            return svcTowards.count;
+        }else {
+            return 1;
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrivals.count;
     }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let svc = svcTowards?[section] else { return "" }
+        return svc;
+    }
+  /*  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let vw = UIView();
+        vw.backgroundColor = UIColor.red;
+        return vw;
+    }*/
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ArrivalCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArrivalCell", for: indexPath) 
         let now = Date()
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute]
@@ -60,7 +87,9 @@ class DetailViewController: UITableViewController, PopupProvider {
         //When data is loaded fully, refres this table
         if isDataLoaded {
             if let sCell = cell as? ArrivalViewCell {
-                let whichArrival = arrivals[indexPath.row];
+                print("section \(indexPath.section) and row \(indexPath.row)")
+                let whichArrival = arrivals[indexPath.row]; ///arrivals[indexPath.row];
+                
                 sCell.lblDetails.text = "\(whichArrival.stopName) #\(whichArrival.routeNum)";
                 sCell.lblMain.text = "\(whichArrival.svcToward)";
                 //Calculate how many minutes away the trains are
@@ -76,6 +105,7 @@ class DetailViewController: UITableViewController, PopupProvider {
             }
         }
         return cell;
+
     }
     func popupMessage (title: String, message: String) {
         let popup = UIAlertController(title: title, message: message , preferredStyle:  .alert);

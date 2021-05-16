@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MKMapViewDelegate, PopupProvider {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MKMapViewDelegate, PopupProvider, Refreshable {
 
     @IBOutlet var btnRed: UIButton!
     @IBOutlet var btnOrange: UIButton!
@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let locationManager = CLLocationManager();
     var isDataLoaded = false;
     var visibleStops: [TrainStop] = [TrainStop]();
+    var tappedPinId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +33,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self;
         
         //Styling the button icons
-        btnRed.styleMe();
-        btnOrange.styleMe();
-        btnGreen.styleMe();
-        btnYellow.styleMe();
-        btnBlue.styleMe();
-        btnBrown.styleMe();
-        btnPurple.styleMe();
-        btnPink.styleMe();
+
         
         let status = CLLocationManager.authorizationStatus();
         if status == .denied || status == .restricted {
@@ -63,8 +57,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         map.isZoomEnabled = true;
         map.isScrollEnabled = true;
         
-
-       
         trains = [Train]();
         //Retrieve trains from the API
         Connect.loadData(parms: ["rt":""], objType: .Train, sender: self, completion: { result in
@@ -81,16 +73,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if self.isDataLoaded {
 //            map.removeAnnotations(map.annotations);
             visibleStops = [TrainStop]();
+            tappedPinId = -1;
             if let trains = trains {
                 for t in trains {
                     if let stops = t.trainStops {
                         print (stops.count);
+                        var i = 0;
                         for stop in stops {
                             let mark = stop.value.getMarker();
                             if isCoordNearby(coord: mark.coordinate) {
                                 map.addAnnotation(mark);
                                 stop.value.setDistanceToMe(yourCoord: locationManager.location?.coordinate);
                                 visibleStops.append(stop.value);
+                                i += 1;
                             }
                         }
                     }
@@ -112,10 +107,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Get the train-line from the icon the user clicked
-        //line = segue.identifier ?? "";
+        var selectedStop = -1;
+        if let pinId = tappedPinId {
+            if pinId >= 0 { selectedStop = pinId; }
+        }
+        if let tblId = self.tableView.indexPathForSelectedRow {
+            if selectedStop < 0 {
+                selectedStop = tblId.row;
+            }
+        }
         if let detailViewController = segue.destination as? DetailViewController {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                detailViewController.selectedStop = trains?[0].getStop(indexPath.row) ?? TrainStop();
+            if selectedStop >= 0 {
+                detailViewController.selectedStop = visibleStops[selectedStop];// trains?[0].getStop(indexPath.row) ?? TrainStop();
             }
         }
     }
@@ -123,6 +126,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let popup = UIAlertController(title: title, message: message , preferredStyle:  .alert);
         popup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil));
         self.present(popup, animated: true, completion: nil);
+    }
+    func refresh() {
+        isDataLoaded = true;
+        tableView.reloadData();
+        putAnnotations();
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let myLoc: CLLocationCoordinate2D = manager.location?.coordinate else { return }
@@ -135,33 +143,49 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         putAnnotations();
     }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var view : MKPinAnnotationView
+        guard let annotation = annotation as? Marker else {return nil}
+        let id = annotation.mapId ?? "";
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: id) as? MKPinAnnotationView {
+            view = dequeuedView
+        }else {
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: id);
+        }
+        view.isEnabled = true;
+        view.canShowCallout = true;
+        let btn = UIButton(type: .detailDisclosure);
+        
+        view.leftCalloutAccessoryView = btn;
+        return view;
+    }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let marker = view.annotation as! Marker;
+        var i = 0;
+        for stop in visibleStops {
+            if stop.stopId == marker.mapId {
+                tappedPinId = i;
+                break;
+            }
+            i += 1;
+        }
+        self.performSegue(withIdentifier: "To_Detail", sender: self)
+    }
     //***************************************************************
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //We'll have one table row for every train stop
-        var stopCount = 0;
-        
-       /* guard let trainLine = trains else {
-            return 1;
-        }
-        //There's only one train
-        for rootTrain in trainLine {
-            stopCount += rootTrain.trainStops?.count ?? 0;
-        }
-        return stopCount;
- */
         return visibleStops.count;
     }
-   
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrainStop", for: indexPath)
         
         //Only update the table if data was successfully retrieve from the API
         if isDataLoaded {
-            guard let trainLine = trains?[0] else {
+            guard let _ = trains?[0] else {
                 return cell;
             }
             if let sCell = cell as? StopTableCell {
@@ -169,11 +193,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 sCell.lblStopName.text = whichStop.name;
                 if whichStop.isHandicapAssessible == 1 {
                     sCell.lblStopName.text = whichStop.name + " ♿️"
-                }else {
-
                 }
                 sCell.lblSubtitle.text = whichStop.getDistance();
                 sCell.barCircle.setColor(strColor: line);
+                for c in whichStop.strColors {
+                    sCell.colors.addColor(strColor: c);
+                }
             }
         }
         return cell;
@@ -186,27 +211,5 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 extension UIButton {
 
-    //Sets rounded corners on the icons, moves text label under the icon
-    func styleMe(padding: CGFloat = 0.0) {
-        self.setTitleColor(UIColor.black, for: UIControl.State.normal);
-        let imageSize = self.imageView!.image!.size;
-        let titleSize = self.titleLabel!.frame.size
-        let totalHeight = imageSize.height + titleSize.height + padding + 20.0
-        
-        self.layer.cornerRadius = 15.0;
-
-        self.imageEdgeInsets = UIEdgeInsets(
-            top: -(totalHeight - imageSize.height),
-            left: 0,
-            bottom: -40,
-            right: -titleSize.width
-        )
-        self.titleEdgeInsets = UIEdgeInsets(
-            top: 0,
-            left: -imageSize.width,
-            bottom: -(totalHeight - titleSize.height),
-            right: 0
-        )
-    }
 
 }

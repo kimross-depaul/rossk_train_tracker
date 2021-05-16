@@ -16,6 +16,36 @@ enum CTAObjectType {
 }
 
 class CTAObjectFactory {
+    static func parseAndCreate(data: Data, objType: CTAObjectType) throws {
+        
+        switch objType {
+        case .Arrival :
+            try parseAsDict(data: data, objType: objType);
+        case .TrainStop, .Train:
+            try parseAsArray(data: data, objType: objType);
+        }
+    }
+    static func parseAsDict(data: Data, objType: CTAObjectType) throws {
+        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jDict {
+            guard let root = json["ctatt"] as? jDict else {
+                throw SerializationError.missingElement("Root node is missing from json");
+            }
+            switch objType {
+            case .Arrival:
+                arrivals = CTAObjectFactory.createCTAObject(jDict: root, objType: .Arrival) as? [Arrival] ?? [Arrival]();
+            case .TrainStop:
+                trainStops = CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop]
+            case .Train:
+                print ("Invalid argument");
+            }
+        }
+    }
+    static func parseAsArray(data: Data, objType: CTAObjectType) throws {
+        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jArray {
+            trains = CTAObjectFactory.createCTAObject(jAry: json, objType: .Train) as? [Train] ?? [Train]();
+        }
+    }
+    
     //CTA Objects that return Dictionaries are Arrivals and TrainStops
     static func createCTAObject(jDict: jDict, objType: CTAObjectType) -> [CTAObject] {
         switch objType {
@@ -53,7 +83,7 @@ class CTAObjectFactory {
         case .failure(let error):
             print("ERROR! \(error)")
             var ret = [Train]();
-            ret.append(Train(line: line, stopName: "Stops not available - try again later", isAda: 0, direction: "", stopId: "", lat: 0.0, long: 0.0));
+            ret.append(Train()); //Train(line: line, stopName: "Stops not available - try again later", isAda: 0, direction: "", stopId: "", lat: 0.0, long: 0.0));
             return ret;
         case .success(let newTrains):
             return newTrains;
@@ -129,39 +159,20 @@ class CTAObjectFactory {
         //Create a Train, then TrainStops (added to our Train object)
         for trainNode in root {
             if let node = trainNode as? jDict {
-                let stopName = node["station_name"] as? String ?? "";
-                let isAda = node["ada"] as? Int ?? 0;
-                let dirId = node["direction_id"] as? String ?? "";
-                let stopId = node["map_id"] as? String ?? "";
-                let lat_long = getLatLong(node["location"]);
-                
                 if append {
-                    let newTrain = Train(line: line, stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: lat_long.0, long: lat_long.1);
+                    let newTrain = Train(node: node); //line: line, stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: lat_long.0, long: lat_long.1);
+                    
                     retTrains.append(newTrain);
                     append = false;
                 }else {
-                    retTrains[0].addStop(stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: lat_long.0, long: lat_long.1)
+                    retTrains[0].addStop(node: node); //stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: lat_long.0, long: lat_long.1)
                 }
             }
         }
+        //trains = retTrains;
         return .success(retTrains);
     }
-    static func getLatLong(_ location: Any?) -> (Double, Double) {
-        var lat: Double = 0.0;
-        var long: Double = 0.0;
-        if let locAry = location as? jDict {
-            let locLat = locAry["latitude"] ?? "0";
-            let locLong = locAry["longitude"] ?? "0";
-            
-            if let strLat = locLat as? String {
-                lat = NumberFormatter().number(from: strLat)?.doubleValue ?? 0.0;
-            }
-            if let strLong = locLong as? String {
-                long = NumberFormatter().number(from: strLong)?.doubleValue ?? 0.0;
-            }
-        }
-        return (lat, long);
-    }
+   
     //Creates an Arrival CTAObject from the json result
     static func createArrivals(root: jDict) -> Result<[Arrival],SerializationError>{
         var retArrivals = [Arrival]();

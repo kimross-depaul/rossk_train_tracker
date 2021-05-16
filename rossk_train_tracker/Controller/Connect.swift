@@ -16,10 +16,10 @@ class Connect {
         let urlString = CTAObjectFactory.createCTAUrl(parms: parms, objType: objType);
         guard let url = URL(string: urlString) else { return }
         
-        let config = URLSessionConfiguration.default
+        /*let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = TimeInterval(25)
-        config.timeoutIntervalForResource = TimeInterval(25)
-        let session = URLSession(configuration: config)
+        config.timeoutIntervalForResource = TimeInterval(25)*/
+        let session = URLSession.shared;// URLSession(configuration: config)
         let request = URLRequest(url: url);
         
         session.dataTask(with: request) { data, response, error in
@@ -32,25 +32,7 @@ class Connect {
 
             //Parse the JSON and create the correct object
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jDict {
-                    guard let root = json["ctatt"] as? jDict else {
-                        throw SerializationError.missingElement("Root node is missing from json");
-                    }
-                    if objType == .Arrival {
-                        if let newArrivals = CTAObjectFactory.createCTAObject(jDict: root, objType: .Arrival) as? [Arrival] {
-                            arrivals = newArrivals;
-                        }
-                    } else {
-                        trainStops = CTAObjectFactory.createCTAObject(jDict: root, objType: objType) as? [TrainStop]
-                    }
-                }
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? jArray {
-                    if objType == .Train {
-                        if let newTrains = CTAObjectFactory.createCTAObject(jAry: json, objType: .Train) as? [Train] {
-                            trains? = newTrains
-                        }
-                    }
-                }
+                try CTAObjectFactory.parseAndCreate(data: data, objType: objType);
             } catch SerializationError.missingElement(let msg) {
                 Connect.logError("Missing: \(msg)", vc: sender);
             } catch SerializationError.invalidResponse(let msg, let data) {
@@ -61,18 +43,8 @@ class Connect {
             
             //Refresh the view-controller's data
             DispatchQueue.main.async {
-                if let homeSender = sender as? HomeViewController {
-                    homeSender.isDataLoaded = true;
-                    homeSender.tableView.reloadData();
-                    homeSender.putAnnotations();
-                }
-                if let stopSender = sender as? StopTableViewController {
-                    stopSender.isDataLoaded = true;
-                    stopSender.tableView.reloadData();
-                }
-                if let arrivalSender = sender as? DetailViewController {
-                    arrivalSender.isDataLoaded = true;
-                    arrivalSender.tableView.reloadData();
+                if let mainSender = sender as? Refreshable {
+                    mainSender.refresh();
                 }
             }
         }.resume();

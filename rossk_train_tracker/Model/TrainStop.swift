@@ -16,6 +16,7 @@ class TrainStop: CTAObject {
     var latitude: Double;
     var longitude: Double;
     var distanceToMe: Double;
+    var strColors: [String];
     
     init (name: String, isHandicapAccessible: Int, stopId: String, lat: Double, long: Double) {
         self.name = name;
@@ -24,6 +25,7 @@ class TrainStop: CTAObject {
         self.latitude = lat;
         self.longitude = long;
         distanceToMe = -1;
+        strColors = [String]();
     }
     //If we don't receive any data, fill an empty TrainStop with a nice message
     init () {
@@ -33,10 +35,14 @@ class TrainStop: CTAObject {
         latitude = 0.0;
         longitude = 0.0;
         distanceToMe = -1;
+        strColors = [String]();
+    }
+    func addColor(_ strColor: String) {
+        strColors.append(strColor);
     }
     func getMarker() -> Marker {
         let coord = CLLocationCoordinate2D(latitude: CLLocationDegrees(self.latitude), longitude: CLLocationDegrees(self.longitude));
-        return Marker(coord, title: name);
+        return Marker(coord, title: name, mapId: stopId);
     }
     func setDistanceToMe(yourCoord: CLLocationCoordinate2D?) {
         if let yourCoord = yourCoord {

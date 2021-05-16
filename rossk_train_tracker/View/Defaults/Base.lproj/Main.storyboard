@@ -32,85 +32,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="train_drawing" translatesAutoresizingMaskIntoConstraints="NO" id="LJS-X8-ptw">
-                                <rect key="frame" x="0.0" y="14" width="414" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="iEJ-ll-ECZ"/>
-                                </constraints>
-                            </imageView>
-                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swell El" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHn-0C-ZLC">
-                                <rect key="frame" x="0.0" y="156" width="414" height="66.5"/>
-                                <color key="backgroundColor" systemColor="systemGrayColor"/>
-                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="57"/>
+                            <label userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="________________________" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CB-GN-aj0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <fontDescription key="fontDescription" name="Menlo-BoldItalic" family="Menlo" pointSize="54"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-p0-bES">
-                                <rect key="frame" x="47" y="891" width="320" height="261"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-zU-3rl">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5un-ed-r0g">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
-                                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                                <state key="normal" title="Red Line" image="train_icon"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ton-My-wsp">
-                                                <rect key="frame" x="170" y="0.0" width="150" height="64.5"/>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                                <state key="normal" title="Orange Line" image="train_icon"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="smc-eg-fnz">
-                                        <rect key="frame" x="0.0" y="65.5" width="320" height="64.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-Lk-Otb">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
-                                                <color key="backgroundColor" red="0.043002139929286261" green="0.37078124999999995" blue="0.0065685929937450123" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Green Line" image="train_icon"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL2-if-dWg">
-                                                <rect key="frame" x="170" y="0.0" width="150" height="64.5"/>
-                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                                <state key="normal" title="Yellow Line" image="train_icon"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pt8-TE-65b">
-                                        <rect key="frame" x="0.0" y="131" width="320" height="64.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-d9-lCE">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                                <state key="normal" title="Blue Line" image="train_icon"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-4l-v12">
-                                                <rect key="frame" x="170" y="0.0" width="150" height="64.5"/>
-                                                <color key="backgroundColor" red="0.37078124999999995" green="0.23587807772400593" blue="0.017983143700757338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Brown Line" image="train_icon"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dAY-Ti-8bE">
-                                        <rect key="frame" x="0.0" y="196.5" width="320" height="64.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plN-0I-XmB">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="64.5"/>
-                                                <color key="backgroundColor" red="0.24679749000902279" green="0.065841817844115649" blue="0.37078124999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Purple Line" image="train_icon"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyC-CC-34F">
-                                                <rect key="frame" x="170" y="0.0" width="150" height="64.5"/>
-                                                <color key="backgroundColor" red="1" green="0.4882920080622809" blue="0.68212687150684415" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Pink Line" image="train_icon"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
+                            <label userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Swell El" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHn-0C-ZLC">
+                                <rect key="frame" x="0.0" y="36" width="414" height="63"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <fontDescription key="fontDescription" name="Menlo-BoldItalic" family="Menlo" pointSize="54"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LTc-Ex-Mbe">
-                                <rect key="frame" x="0.0" y="219" width="414" height="396"/>
+                                <rect key="frame" x="0.0" y="99" width="414" height="516"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KFi-gB-d04">
                                 <rect key="frame" x="0.0" y="615" width="414" height="247"/>
@@ -145,14 +84,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0Y-TN-XMy" customClass="StopColors" customModule="rossk_train_tracker" customModuleProvider="target">
-                                                    <rect key="frame" x="271" y="11" width="143" height="21"/>
+                                                <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0Y-TN-XMy" customClass="StopColors" customModule="rossk_train_tracker" customModuleProvider="target">
+                                                    <rect key="frame" x="271" y="11" width="133" height="21"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="FF6-QD-pFw"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="L0Y-TN-XMy" secondAttribute="trailing" id="7Y8-NR-7uQ"/>
-                                                <constraint firstItem="ZQ6-9P-Dfx" firstAttribute="top" secondItem="L0Y-TN-XMy" secondAttribute="bottom" constant="5" id="Dyr-LB-vGf"/>
+                                                <constraint firstAttribute="trailing" secondItem="L0Y-TN-XMy" secondAttribute="trailing" constant="10" id="7Y8-NR-7uQ"/>
+                                                <constraint firstItem="ZQ6-9P-Dfx" firstAttribute="top" relation="lessThanOrEqual" secondItem="L0Y-TN-XMy" secondAttribute="bottom" constant="5" id="Dyr-LB-vGf"/>
                                                 <constraint firstItem="L0Y-TN-XMy" firstAttribute="top" secondItem="BBz-z3-nMK" secondAttribute="top" constant="11" id="FV5-mM-UeH"/>
                                                 <constraint firstItem="ZQ6-9P-Dfx" firstAttribute="top" secondItem="TEF-nQ-ZUC" secondAttribute="bottom" constant="5" id="H1o-q4-oNK"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ZQ6-9P-Dfx" secondAttribute="bottom" constant="9" id="HhG-7E-TP6"/>
@@ -170,6 +112,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="barCircle" destination="XyS-34-hDs" id="kce-Sh-I1X"/>
+                                            <outlet property="colors" destination="L0Y-TN-XMy" id="ZjG-eB-4Ft"/>
                                             <outlet property="lblStopName" destination="TEF-nQ-ZUC" id="pjr-4B-BlQ"/>
                                             <outlet property="lblSubtitle" destination="ZQ6-9P-Dfx" id="vo7-hP-hxh"/>
                                             <segue destination="8WV-Si-wR0" kind="show" identifier="To_Detail" trigger="accessoryAction" id="g85-Gi-Um2"/>
@@ -182,32 +125,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KFi-gB-d04" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="5Th-Nt-48w"/>
-                            <constraint firstItem="VHn-0C-ZLC" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="6Jn-oR-ZcL"/>
+                            <constraint firstItem="LTc-Ex-Mbe" firstAttribute="top" secondItem="VHn-0C-ZLC" secondAttribute="bottom" id="ADk-ny-Gjk"/>
                             <constraint firstItem="LTc-Ex-Mbe" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="H27-TL-1CQ"/>
-                            <constraint firstItem="LJS-X8-ptw" firstAttribute="top" secondItem="0u8-Il-15p" secondAttribute="top" constant="14" id="IYB-CH-yyG"/>
-                            <constraint firstItem="VHn-0C-ZLC" firstAttribute="top" secondItem="sIP-ry-Qf7" secondAttribute="top" constant="68" id="JOB-21-xRI"/>
-                            <constraint firstItem="LJS-X8-ptw" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="WBq-4r-7q7"/>
-                            <constraint firstItem="LTc-Ex-Mbe" firstAttribute="top" secondItem="VHn-0C-ZLC" secondAttribute="bottom" constant="-3.5" id="a6E-Up-IKD"/>
+                            <constraint firstAttribute="trailing" secondItem="4CB-GN-aj0" secondAttribute="trailing" id="HVU-ko-pIe"/>
+                            <constraint firstItem="4CB-GN-aj0" firstAttribute="top" secondItem="0u8-Il-15p" secondAttribute="top" id="Sp0-rp-lyu"/>
                             <constraint firstItem="LTc-Ex-Mbe" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="bL5-1F-cpT"/>
-                            <constraint firstItem="VHn-0C-ZLC" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="eL5-bD-7XU"/>
-                            <constraint firstItem="KFi-gB-d04" firstAttribute="centerX" secondItem="7VG-p0-bES" secondAttribute="centerX" id="hB3-wp-a3m"/>
+                            <constraint firstItem="VHn-0C-ZLC" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="m2C-be-c4K"/>
                             <constraint firstItem="KFi-gB-d04" firstAttribute="top" secondItem="LTc-Ex-Mbe" secondAttribute="bottom" id="mVG-bo-aTX"/>
                             <constraint firstItem="KFi-gB-d04" firstAttribute="bottom" secondItem="sIP-ry-Qf7" secondAttribute="bottom" id="nNZ-35-juO"/>
-                            <constraint firstItem="7VG-p0-bES" firstAttribute="top" secondItem="sIP-ry-Qf7" secondAttribute="top" constant="803" id="otX-x9-Yj9"/>
+                            <constraint firstItem="VHn-0C-ZLC" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="oE5-VI-VB6"/>
+                            <constraint firstItem="4CB-GN-aj0" firstAttribute="leading" secondItem="0u8-Il-15p" secondAttribute="leading" id="szG-aQ-17G"/>
+                            <constraint firstItem="VHn-0C-ZLC" firstAttribute="top" secondItem="4CB-GN-aj0" secondAttribute="bottom" constant="-27" id="vd1-QP-myC"/>
                             <constraint firstItem="KFi-gB-d04" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="xHY-Md-4pz"/>
-                            <constraint firstItem="LJS-X8-ptw" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="xyK-JN-etN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="L5I-ms-WLA"/>
                     <connections>
-                        <outlet property="btnBlue" destination="mZh-d9-lCE" id="vcf-Q1-7xz"/>
-                        <outlet property="btnBrown" destination="h0f-4l-v12" id="sXB-CY-7tr"/>
-                        <outlet property="btnGreen" destination="FVH-Lk-Otb" id="qQn-Xv-Wsz"/>
-                        <outlet property="btnOrange" destination="ton-My-wsp" id="qYP-iO-1TN"/>
-                        <outlet property="btnPink" destination="wyC-CC-34F" id="Sot-Hx-8sP"/>
-                        <outlet property="btnPurple" destination="plN-0I-XmB" id="5OW-X2-UA0"/>
-                        <outlet property="btnRed" destination="5un-ed-r0g" id="5Cg-4X-j7t"/>
-                        <outlet property="btnYellow" destination="BL2-if-dWg" id="LFc-Pj-2Xu"/>
                         <outlet property="map" destination="LTc-Ex-Mbe" id="Th1-Zm-WaD"/>
                         <outlet property="tableView" destination="KFi-gB-d04" id="rPW-7j-LtW"/>
                     </connections>
@@ -313,25 +246,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="train_drawing" width="1504" height="770"/>
-        <image name="train_icon" width="52" height="64.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
