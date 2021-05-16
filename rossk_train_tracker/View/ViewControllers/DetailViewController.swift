@@ -13,7 +13,7 @@ class DetailViewController: UITableViewController, PopupProvider, Refreshable {
     var selectedStop = TrainStop();
     var isDataLoaded = false;
     var timer: Timer?;
-    var svcTowards: [String]?
+    var svcTowards: [String]?; //These are the section headers, "Service to O'Hare", for example
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,36 +27,40 @@ class DetailViewController: UITableViewController, PopupProvider, Refreshable {
             t.fire();
         }
     }
-    @objc func refreshTimes() {
-        Connect.loadData(parms: ["mapid":selectedStop.stopId], objType: .Arrival, sender: self, completion: { result in
-            switch result {
-            case .success(let ary):
-                svcTowards = [String]();
-                for arrival in ary {
-                    print(arrival);
-                }
-            case .failure(let error):
-                self.popupMessage(title: "Uh Oh!", message: "No trains were returned. \(error.localizedDescription)");
-            }
-        });
-    }
-    func refresh() {
-        isDataLoaded = true;
-        svcTowards = [String]();
-        for arrival in arrivals {
-            if !svcTowards!.contains(arrival.svcToward) {
-                svcTowards!.append(arrival.svcToward);
-            }
-        }
-        tableView.reloadData();
-    }
     override func viewWillDisappear(_ animated: Bool) {
         //Invalidate the timer when this scren disappears
         if let t = timer {
             t.invalidate();
         }
     }
-
+    @objc func refreshTimes() {
+        Connect.loadData(parms: ["mapid":selectedStop.stopId], objType: .Arrival, sender: self, completion: { result in
+            switch result {
+            case .success(let ary):
+                print(ary);
+            case .failure(let error):
+                self.popupMessage(title: "Uh Oh!", message: "No trains were returned. \(error.localizedDescription)");
+            }
+        });
+    }
+    
+    /******************************************************************************/
+    /************************ REFRESHABLE REQ'D FUNCTIONS************************/
+    /******************************************************************************/
+    func refresh() {
+        isDataLoaded = true;
+        svcTowards = [String]();
+        for arrival in arrivals {
+            if svcTowards?.contains(arrival.svcToward) == false {
+                svcTowards?.append(arrival.svcToward);
+            }
+        }
+        tableView.reloadData();
+    }
+    /******************************************************************************/
+    /************************ TABLE VIEW FUNCTIONS *******************************/
+    /******************************************************************************/
+    //The number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         if let svcTowards = svcTowards {
             return svcTowards.count;
@@ -64,34 +68,46 @@ class DetailViewController: UITableViewController, PopupProvider, Refreshable {
             return 1;
         }
     }
-
+    //The number of rows in (the current) section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrivals.count;
+        let whichSection = svcTowards?[section];
+        let arrivalsInSection = arrivals.filter() {$0.svcToward == whichSection };
+        return arrivalsInSection.count;
     }
+    //The section's title
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let svc = svcTowards?[section] else { return "" }
-        return svc;
+        if let svcs = svcTowards {
+            return svcs[section];
+        }
+        return "";
     }
-  /*  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let vw = UIView();
-        vw.backgroundColor = UIColor.red;
+        vw.backgroundColor = #colorLiteral(red: 0.3031301361, green: 0.715178265, blue: 0.7947372512, alpha: 1);
+        let lbl = UILabel();
+        lbl.text = svcTowards?[section];
+        lbl.textColor = UIColor.white;
+        lbl.font = .systemFont(ofSize: 20.0);
+        lbl.frame = CGRect.init(x: 5, y: 5, width: tableView.frame.width, height: 20.0);
+        vw.addSubview(lbl);
         return vw;
-    }*/
-   
+    }
+    //Populating each row's cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArrivalCell", for: indexPath) 
         let now = Date()
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute]
         
-        //When data is loaded fully, refres this table
+        //When data is loaded fully, refresH this table
         if isDataLoaded {
             if let sCell = cell as? ArrivalViewCell {
-                print("section \(indexPath.section) and row \(indexPath.row)")
-                let whichArrival = arrivals[indexPath.row]; ///arrivals[indexPath.row];
+                let whichSection = svcTowards?[indexPath.section];
+                let arrivalsInSection = arrivals.filter() {$0.svcToward == whichSection };
+                let whichArrival = arrivalsInSection[indexPath.row];
                 
-                sCell.lblDetails.text = "\(whichArrival.stopName) #\(whichArrival.routeNum)";
-                sCell.lblMain.text = "\(whichArrival.svcToward)";
+                sCell.lblDetails.text = "Train #\(whichArrival.routeNum)"
+                sCell.lblMain.text = "\(whichArrival.stopName)"; 
                 //Calculate how many minutes away the trains are
                 if let thisOnesTime = whichArrival.timePrediction {
                     var minutesLeft = formatter.string(from: now, to: thisOnesTime)! + " Min.";
@@ -107,6 +123,9 @@ class DetailViewController: UITableViewController, PopupProvider, Refreshable {
         return cell;
 
     }
+    /******************************************************************************/
+    /************************ POPUP PROVIDER FUNCTIONS***************************/
+    /******************************************************************************/
     func popupMessage (title: String, message: String) {
         let popup = UIAlertController(title: title, message: message , preferredStyle:  .alert);
         popup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil));
