@@ -46,7 +46,9 @@ class StopColors: UIView {
         if colorsToDraw == nil {
             colorsToDraw = [String]();
         }
-        colorsToDraw!.append(strColor);
+        if !(colorsToDraw!.contains(strColor)) {
+            colorsToDraw!.append(strColor);
+        }
     }
     //Lines from City of Chicago:  red, blue, g, brn, p, y, pnk, o
     //Lines from Chicago Transit:  red, blue, g, brn, p, y, pink, org
@@ -57,8 +59,8 @@ class StopColors: UIView {
         case "g" : barColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1);
         case "brn": barColor = UIColor.brown;
         case "p" : barColor = UIColor.purple;
-        case "y" : barColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1);
-        case "pnk": barColor = #colorLiteral(red: 1, green: 0.5937702905, blue: 0.8029879127, alpha: 1);
+        case "y" : barColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1);
+        case "pnk": barColor = #colorLiteral(red: 1, green: 0.4882920081, blue: 0.6821268715, alpha: 1);
         case "o" : barColor = UIColor.orange;
         default: barColor = UIColor.black;
         }

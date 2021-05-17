@@ -39,7 +39,14 @@ class TrainStop: CTAObject {
     }
     // A "Color" refers to an El line (Pink Line, Blue line, etc.)
     func addColor(_ strColor: String) {
-        strColors.append(strColor);
+
+        if !(strColors.contains(strColor)) {
+            strColors.append(strColor);
+        }
+        if self.name == "Howard" {
+            let stop = "yes";
+           // print(strColors);
+        }
     }
     //Produces an MKAnnotation subclass with this class' cooredinates
     func getMarker() -> Marker {
@@ -63,6 +70,8 @@ class TrainStop: CTAObject {
         let feet = distanceToMe * 3.28084;
         if feet >= 250 {
             return String(format: "%.2f Miles from me", feet/3280.84)
+        } else if distanceToMe == -1 { //means we don't have your current location.
+            return "";
         } else {
             return String(format: "%.0f Feet away", feet);
         }

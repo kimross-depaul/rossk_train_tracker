@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,8 +66,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XyS-34-hDs" customClass="LineCircle" customModule="rossk_train_tracker" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="0.0" width="30" height="58"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyS-34-hDs" customClass="LineCircle" customModule="rossk_train_tracker" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="0.0" width="30" height="69"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="Or7-Hn-a3b"/>
@@ -128,18 +129,32 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJB-pM-5fK">
+                                <rect key="frame" x="342" y="590" width="34" height="24"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="location.fill" catalog="system" symbolScale="default"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnMyLocation_click:" destination="ZUO-Mf-LZf" eventType="touchUpInside" id="j83-2E-AFj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sIP-ry-Qf7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KFi-gB-d04" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="5Th-Nt-48w"/>
+                            <constraint firstItem="sIP-ry-Qf7" firstAttribute="trailing" secondItem="nJB-pM-5fK" secondAttribute="trailing" constant="52" id="62u-qJ-H0Q"/>
                             <constraint firstItem="LTc-Ex-Mbe" firstAttribute="top" secondItem="VHn-0C-ZLC" secondAttribute="bottom" id="ADk-ny-Gjk"/>
                             <constraint firstItem="sIP-ry-Qf7" firstAttribute="trailing" secondItem="BfF-9f-J5c" secondAttribute="trailing" id="GC2-Ca-HtI"/>
                             <constraint firstItem="LTc-Ex-Mbe" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="H27-TL-1CQ"/>
                             <constraint firstAttribute="trailing" secondItem="4CB-GN-aj0" secondAttribute="trailing" id="HVU-ko-pIe"/>
                             <constraint firstItem="KFi-gB-d04" firstAttribute="top" secondItem="BfF-9f-J5c" secondAttribute="bottom" constant="2" id="L67-cQ-9aG"/>
+                            <constraint firstItem="nJB-pM-5fK" firstAttribute="top" secondItem="BfF-9f-J5c" secondAttribute="top" id="LJr-4Q-w4l"/>
                             <constraint firstItem="4CB-GN-aj0" firstAttribute="top" secondItem="0u8-Il-15p" secondAttribute="top" id="Sp0-rp-lyu"/>
+                            <constraint firstItem="nJB-pM-5fK" firstAttribute="centerY" secondItem="BfF-9f-J5c" secondAttribute="centerY" id="Ua8-xJ-kWA"/>
                             <constraint firstItem="LTc-Ex-Mbe" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="bL5-1F-cpT"/>
+                            <constraint firstItem="nJB-pM-5fK" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" constant="342" id="ciL-fO-TIZ"/>
                             <constraint firstItem="BfF-9f-J5c" firstAttribute="leading" secondItem="sIP-ry-Qf7" secondAttribute="leading" id="etZ-hW-kaQ"/>
                             <constraint firstItem="VHn-0C-ZLC" firstAttribute="trailing" secondItem="sIP-ry-Qf7" secondAttribute="trailing" id="m2C-be-c4K"/>
                             <constraint firstItem="KFi-gB-d04" firstAttribute="bottom" secondItem="sIP-ry-Qf7" secondAttribute="bottom" id="nNZ-35-juO"/>
@@ -152,6 +167,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="L5I-ms-WLA"/>
                     <connections>
+                        <outlet property="btnMyLocation" destination="nJB-pM-5fK" id="shj-Cf-g8E"/>
                         <outlet property="map" destination="LTc-Ex-Mbe" id="Th1-Zm-WaD"/>
                         <outlet property="tableView" destination="KFi-gB-d04" id="rPW-7j-LtW"/>
                     </connections>
@@ -237,6 +253,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

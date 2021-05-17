@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var btnPink: UIButton!
     @IBOutlet var map: MKMapView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var btnMyLocation: UIButton!
     
     let locationManager = CLLocationManager();
     var isDataLoaded = false;
@@ -55,16 +56,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         map.isScrollEnabled = true;
     }
     override func viewWillAppear(_ animated: Bool) {
-        //COME BACK - SHOULD EXECUTE WHEN THE PERSON MOVES, not just when view appears
-        if (hasLocationPermission) {
-            guard let myLoc: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
-            let regionView = MKCoordinateRegion(center: myLoc, latitudinalMeters: 500, longitudinalMeters: 500);
-            map.setRegion(regionView, animated: false);
-            map.showsUserLocation = true;
-        }
-        
         //Hide the nav bar from root controller
         self.navigationController?.setNavigationBarHidden(true, animated: true);
+        
+        //COME BACK - SHOULD EXECUTE WHEN THE PERSON MOVES, not just when view appears
+        if (hasLocationPermission) {
+            centerMapOnMyLocation();
+        }
 
         //Retrieve trains from the API
         trains = [Train]();
@@ -77,7 +75,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         });
     }
-
+    func centerMapOnMyLocation() {
+        if let myLoc: CLLocationCoordinate2D = locationManager.location?.coordinate {
+            let regionView = MKCoordinateRegion(center: myLoc, latitudinalMeters: 500, longitudinalMeters: 500);
+            map.setRegion(regionView, animated: false);
+            map.showsUserLocation = true;
+        }else {
+            popupMessage(title: "Location Not Available", message: "Unable to determine your current location - listing all train stops in Chicago.");
+        }
+    }
+    @IBAction func btnMyLocation_click(_ sender: UIButton) {
+        centerMapOnMyLocation();
+    }
+    
     func putAnnotations() {
         if self.isDataLoaded {
             visibleStops = [TrainStop]();
@@ -202,9 +212,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
                 sCell.lblSubtitle.text = whichStop.getDistance();
                 sCell.barCircle.setColor(strColor: "");
+                sCell.colors.colorsToDraw = [String]();
                 for c in whichStop.strColors {
                     sCell.colors.addColor(strColor: c);
                 }
+                sCell.colors.setNeedsDisplay();
             }
         }
         return cell;
