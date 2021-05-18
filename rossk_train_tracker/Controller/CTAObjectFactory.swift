@@ -17,7 +17,6 @@ enum CTAObjectType {
 
 class CTAObjectFactory {
     static func parseAndCreate(data: Data, objType: CTAObjectType) throws {
-        
         switch objType {
         case .Arrival :
             try parseAsDict(data: data, objType: objType);
@@ -61,16 +60,7 @@ class CTAObjectFactory {
                 return ary;
             }
         case .TrainStop:
-            let dataResult = createTrainStops(root: jDict);
-            switch dataResult {
-            case .failure(let error) :
-                print("ERROR!!! \(error)")
-                var ret = [TrainStop]();
-                ret.append(TrainStop(name: "Unable to get stops - try again later", isHandicapAccessible: 0, stopId: "0", lat: 0.0, long: 0.0))
-                return ret;
-            case .success(let ary) :
-                return ary;
-            }
+            print ("Not implemented");
         case .Train:
             print("You used this library incorrectly - Trains return arrays, not dictionaries");
         }
@@ -120,35 +110,7 @@ class CTAObjectFactory {
             return "https://lapi.transitchicago.com/api/1.0/ttfollow.aspx?key=3a2367a9d5ca4cd695e310b7350b2b91&runnumber=\(String(describing: parms["runnumber"]))&outputType=JSON";
         }
     }
-    
-    //Creates TrainStop CTAObjects from a json dictionary
-    static func createTrainStops(root: jDict) -> Result<[TrainStop],SerializationError> {
-        var trainStopResults = [TrainStop]();
-        guard let entries = root["route"] as? jArray else {
-            return .failure(SerializationError.missingElement("There should be a 'route' node!"));
-        }
-        
-        for e in entries {
-            if let entry = e as? jDict {
-                //trains are an array of train attributes (route 422, about to stop at station 40380... etc.)
-                guard let trains = entry["train"] as? jArray else {
-                    return .failure(SerializationError.missingElement("The Train element is missing"));
-                }
-                //Get each station name, handicap status, and stop ID from the results.
-                //These are appended to the array we return
-                for t in trains {
-                    if let thisTrain = t as? [String:Any] {
-                        
-                        let nextName = thisTrain["nextStaNm"] as? String ?? "Unavailable";
-//                        let lat_long = thisTrain["location"]
-                        let newStop = TrainStop(name: nextName, isHandicapAccessible: 1, stopId: "1", lat: 2.0, long: 3.0);
-                        trainStopResults.append(newStop);
-                    }
-                }
-            }
-        }
-        return .success(trainStopResults);
-    }
+   
     //Creates Train CTAObjects from the json result
     static func createTrains(root: jArray) -> Result<[Train],SerializationError> {
         //There is 1 Train object with many TrainStops.
@@ -160,12 +122,11 @@ class CTAObjectFactory {
         for trainNode in root {
             if let node = trainNode as? jDict {
                 if append {
-                    let newTrain = Train(node: node); //line: line, stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: lat_long.0, long: lat_long.1);
-                    
+                    let newTrain = Train(node: node);
                     retTrains.append(newTrain);
                     append = false;
                 }else {
-                    retTrains[0].addStop(node: node); //stopName: stopName, isAda: isAda, direction: dirId, stopId: stopId, lat: lat_long.0, long: lat_long.1)
+                    retTrains[0].addStop(node: node);
                 }
             }
         }

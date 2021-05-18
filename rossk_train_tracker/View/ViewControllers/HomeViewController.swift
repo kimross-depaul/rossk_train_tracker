@@ -15,14 +15,6 @@ var trainStops = [TrainStop]();
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MKMapViewDelegate, PopupProvider, Refreshable {
 
-    @IBOutlet var btnRed: UIButton!
-    @IBOutlet var btnOrange: UIButton!
-    @IBOutlet var btnGreen: UIButton!
-    @IBOutlet var btnYellow: UIButton!
-    @IBOutlet var btnBlue: UIButton!
-    @IBOutlet var btnBrown: UIButton!
-    @IBOutlet var btnPurple: UIButton!
-    @IBOutlet var btnPink: UIButton!
     @IBOutlet var map: MKMapView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var btnMyLocation: UIButton!
@@ -61,6 +53,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //COME BACK - SHOULD EXECUTE WHEN THE PERSON MOVES, not just when view appears
         if (hasLocationPermission) {
+            locationManager.startUpdatingLocation();
             centerMapOnMyLocation();
         }
 
@@ -92,22 +85,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if self.isDataLoaded {
             visibleStops = [TrainStop]();
             tappedPinId = -1;
-            //if let trains = trains {
-                for t in trains {
-                    if let stops = t.trainStops {
-                        var i = 0;
-                        for stop in stops {
-                            let mark = stop.value.getMarker();
-                            if isCoordNearby(coord: mark.coordinate) {
-                                map.addAnnotation(mark);
-                                stop.value.setDistanceToMe(yourCoord: locationManager.location?.coordinate);
-                                visibleStops.append(stop.value);
-                                i += 1;
-                            }
+
+            for t in trains {
+                if let stops = t.trainStops {
+                    var i = 0;
+                    for stop in stops {
+                        let mark = stop.value.getMarker();
+                        if isCoordNearby(coord: mark.coordinate) {
+                            map.addAnnotation(mark);
+                            stop.value.setDistanceToMe(yourCoord: locationManager.location?.coordinate);
+                            visibleStops.append(stop.value);
+                            i += 1;
                         }
                     }
                 }
-          //  }
+            }
+
             visibleStops.sort {$0.distanceToMe < $1.distanceToMe} ;
             tableView.reloadData();
         }
@@ -155,7 +148,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         map.setRegion(regionView, animated: false);
     }
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-     //   map.removeAnnotations(map.annotations);
         putAnnotations();
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

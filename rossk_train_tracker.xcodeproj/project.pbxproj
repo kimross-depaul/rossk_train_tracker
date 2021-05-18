@@ -53,7 +53,7 @@
 		3881886126501B81000F1549 /* StopColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopColors.swift; sourceTree = "<group>"; };
 		3881886626502C11000F1549 /* RefreshableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableProtocol.swift; sourceTree = "<group>"; };
 		3881886B265060B1000F1549 /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
-		388188732651D27D000F1549 /* WalkingFromOglvie.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WalkingFromOglvie.gpx; sourceTree = "<group>"; };
+		388188732651D27D000F1549 /* WalkingFromOglvie.gpx.disabled */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WalkingFromOglvie.gpx.disabled; sourceTree = "<group>"; };
 		388299182642349B004CDC10 /* PopupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupProtocol.swift; sourceTree = "<group>"; };
 		3882992A264CAF74004CDC10 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		38848510263E3EDC00211E2C /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 			children = (
 				38CBC3D72639E7790008D63A /* rossk_train_trackerTests.swift */,
 				38CBC3D92639E77A0008D63A /* Info.plist */,
-				388188732651D27D000F1549 /* WalkingFromOglvie.gpx */,
+				388188732651D27D000F1549 /* WalkingFromOglvie.gpx.disabled */,
 			);
 			path = rossk_train_trackerTests;
 			sourceTree = "<group>";

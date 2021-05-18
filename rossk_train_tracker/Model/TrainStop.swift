@@ -39,15 +39,18 @@ class TrainStop: CTAObject {
     }
     // A "Color" refers to an El line (Pink Line, Blue line, etc.)
     func addColor(_ strColor: String) {
-
         if !(strColors.contains(strColor)) {
             strColors.append(strColor);
         }
-        if self.name == "Howard" {
-            let stop = "yes";
-           // print(strColors);
+    }
+    // Some trains have colors only in one direction - this merges them together
+    // (The Howard station only has a "red line" going south bound.  Merges multiple stops into all lines for the station)
+    func mergeColors(_ otherStopColors: [String]) {
+        for c in otherStopColors {
+            addColor(c);
         }
     }
+    
     //Produces an MKAnnotation subclass with this class' cooredinates
     func getMarker() -> Marker {
         let coord = CLLocationCoordinate2D(latitude: CLLocationDegrees(self.latitude), longitude: CLLocationDegrees(self.longitude));
